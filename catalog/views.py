@@ -11,4 +11,5 @@ def contacts(request):
         phone = request.POST.get('phone')
         message = request.POST.get('message')
         print(f"{name} ({phone}): {message}")
+
     return render(request, 'main/contacts.html')
