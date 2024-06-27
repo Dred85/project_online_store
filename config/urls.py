@@ -22,7 +22,7 @@ from catalog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('catalog.urls')),
-    path('success/', views.success_view, name='success'),
+    # path('success/', views.success_view, name='success'),
 
 
 
