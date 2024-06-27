@@ -15,18 +15,8 @@ def contacts(request):
             return redirect('success')  # Перенаправление на страницу успеха после сохранения
     else:
         form = ContactForm()
-    return render(request, 'main/contacts.html')
+    return render(request, 'main/contacts.html', {'form': form})
 
-
-def contact_view(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('success')  # Перенаправление на страницу успеха после сохранения
-    else:
-        form = ContactForm()
-    return render(request, 'main/contact_form.html', {'form': form})
 
 def success_view(request):
     return render(request, 'main/success.html')
