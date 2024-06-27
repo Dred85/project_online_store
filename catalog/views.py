@@ -13,7 +13,14 @@ def contacts(request):
     #     phone = request.POST.get('phone')
     #     message = request.POST.get('message')
     #     print(f"{name} ({phone}): {message}")
-
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # return redirect('main/success.html')  # Перенаправление на страницу успеха после сохранения
+    else:
+        form = ContactForm()
+    # return render(request, 'main/contact_form.html', {'form': form})
     return render(request, 'main/contacts.html')
 
 
