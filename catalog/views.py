@@ -1,20 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from catalog.forms import ContactForm
 from catalog.models import Product, Contact
-
-
-# def home(request):
-#     return render(request, 'main/home.html')
-
-
-# def contacts(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         phone = request.POST.get('phone')
-#         message = request.POST.get('message')
-#         print(f"{name} ({phone}): {message}")
-#
-#     return render(request, 'main/contacts.html')
 
 
 def home(request):
@@ -27,6 +14,16 @@ def home(request):
 
     return render(request, 'main/home.html', {'latest_products': latest_products})
 
+
 def contacts(request):
     contact_info = Contact.objects.all()
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('contacts')
+    # else:
+        # form = ContactForm()
+    # return render(request, 'main/contacts.html', {'form': form})
     return render(request, 'main/contacts.html', {'contact_info': contact_info})
