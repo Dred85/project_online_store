@@ -9,8 +9,8 @@ class Category(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
 
 class Product(models.Model):
@@ -27,8 +27,8 @@ class Product(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Product'
-        verbose_name_plural = 'Products'
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
@@ -40,5 +40,5 @@ class Contact(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Contact'
-        verbose_name_plural = 'Contacts'
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
