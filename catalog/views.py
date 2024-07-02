@@ -4,9 +4,6 @@ from catalog.forms import ContactForm
 from catalog.models import Product, Contact
 
 
-
-
-
 def home(request):
     # Получение последних пяти товаров
     latest_products = Product.objects.order_by('-created_at')[:5]
@@ -17,16 +14,16 @@ def home(request):
 
     return render(request, 'main/home.html', {'latest_products': latest_products})
 
+
 def contacts(request):
     contact_info = Contact.objects.all()
-
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('contacts')
-    else:
-        form = ContactForm()
+    # else:
+        # form = ContactForm()
     # return render(request, 'main/contacts.html', {'form': form})
     return render(request, 'main/contacts.html', {'contact_info': contact_info})

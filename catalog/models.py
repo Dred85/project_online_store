@@ -22,13 +22,13 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего изменения')
 
-
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+
 
 class Contact(models.Model):
     objects = None
@@ -37,6 +37,7 @@ class Contact(models.Model):
     phone = models.CharField(max_length=20)
     address = models.TextField()
     message = models.TextField()
+
     def __str__(self):
         return self.name
 
