@@ -22,56 +22,68 @@
 </div>
 
 <div class="container">
-    <div class="row text-start">
-        <div class="col-lg-9 col-md-6 col-sm-12">
-            <div class="card mb-4 box-shadow">
+    <div class="row">
+        <div class="col-lg-9 col-md-6 col-sm-12 mb-4">
+            <div class="card box-shadow">
                 <div class="card-body">
-                    <table class="table table-striped">
-                        <h1>Контактная информация</h1>
-                        <ul>
-                            {% for contact in contact_info %}
-                            <li>{{ contact.name }} - {{ contact.email }} - {{ contact.phone }} - {{ contact.address }}
-                            </li>
-                            {% endfor %}
-                        </ul>
+                    <h2 class="card-title">Контактная информация</h2>
+                    <ul class="list-group list-group-flush">
+                        {% for contact in contact_info %}
+                        <li class="list-group-item">
+                            <strong>{{ contact.name }}</strong><br>
+                            Email: {{ contact.email }}<br>
+                            Телефон: {{ contact.phone }}<br>
+                            Адрес: {{ contact.address }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <table class="table table-striped mt-4">
+                        <tbody>
                         <tr>
-                            <td class="w-25">Страна</td>
+                            <td class="w-25"><strong>Страна</strong></td>
                             <td>Российская Федерация</td>
                         </tr>
                         <tr>
-                            <td class="w-25">ИНН</td>
+                            <td class="w-25"><strong>ИНН</strong></td>
                             <td>**********</td>
                         </tr>
                         <tr>
-                            <td class="w-25">Адрес</td>
+                            <td class="w-25"><strong>Адрес</strong></td>
                             <td>Нижний Новгород</td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card mb-4 box-shadow">
+
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <div class="card box-shadow">
                 <div class="card-header">
                     <h4 class="my-0 font-weight-normal">Свяжитесь с нами</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="" class="form-floating">
+                    <form method="post" action="">
                         {% csrf_token %}
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" required>
                             <label for="name">Имя</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя"
-                                   required>
                         </div>
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Ваш email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="phone" class="form-control" id="phone" placeholder="Контактный телефон" required>
                             <label for="phone">Телефон</label>
-                            <input type="text" name="phone" class="form-control" id="phone"
-                                   placeholder="Контактный телефон" required>
                         </div>
-                        <div class="mb-3">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="address" class="form-control" id="address" placeholder="Адрес доставки" required>
+                            <label for="address">Адрес</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea name="message" class="form-control" id="message" placeholder="Введите сообщение" style="height: 100px" required></textarea>
                             <label for="message">Сообщение</label>
-                            <textarea type="text" name="message" class="form-control" id="message"
-                                      placeholder="Контактный телефон" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Отправить</button>
                     </form>
@@ -83,7 +95,7 @@
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
             <div class="col-12 col-md">
-                SkyStore
+                <h5>SkyStore</h5>
                 <small class="d-block mb-3 text-muted">&copy; 2024</small>
             </div>
             <div class="col-6 col-md">
