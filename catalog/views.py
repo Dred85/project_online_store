@@ -19,13 +19,14 @@ def home(request):
 
 def contacts(request):
     contact_info = Contact.objects.all()
-    # return render(request, 'main/contacts.html', {'contact_info': contact_info})
+
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success')  # Перенаправление на страницу успеха после сохранения
+            return redirect('contacts')
     else:
         form = ContactForm()
-    return render(request, 'main/contacts.html', {'form': form})
+    # return render(request, 'main/contacts.html', {'form': form})
+    return render(request, 'main/contacts.html', {'contact_info': contact_info})

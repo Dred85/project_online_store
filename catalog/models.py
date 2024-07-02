@@ -31,6 +31,7 @@ class Product(models.Model):
         verbose_name_plural = 'Продукты'
 
 class Contact(models.Model):
+    objects = None
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
