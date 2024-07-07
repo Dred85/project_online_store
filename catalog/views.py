@@ -17,9 +17,12 @@ def home(request):
     for product in latest_products:
         print(product)
 
-    return render(request, 'main/home.html',
-                  {'latest_products': latest_products, 'list_category': list_category, 'list_products': list_products,
-                   'nums': [2, 3]})
+    return render(request, 'main/home.html', {
+        'latest_products': latest_products,
+        'list_category': list_category,
+        'list_products': list_products,
+        'nums': [2, 3]
+    })
 
 
 def contacts(request):
@@ -30,11 +33,17 @@ def contacts(request):
         if form.is_valid():
             form.save()
             return redirect('contacts')
-    return render(request, 'main/contacts.html', {'contact_info': contact_info})
+    else:
+        form = ContactForm()  # Инициализация формы для GET-запроса
+
+    return render(request, 'main/contacts.html', {
+        'contact_info': contact_info,
+        'form': form  # Передаем форму в контекст
+    })
 
 
 def catalog(request, page, per_page):
-    len_product = len(Product.objects.all())
+    len_product = Product.objects.count()  # Используем count() для оптимизации
     if len_product % per_page != 0:
         page_count = [x + 1 for x in range((len_product // per_page) + 1)]
     else:
@@ -65,16 +74,16 @@ def product_detail(request, pk, page=None, per_page=None):
 
 
 def handle_uploaded_file(f, difference_between_files):
-    if os.path.exists(os.path.join(f"media/product/photo/{f.name}")):
+    if os.path.exists(os.path.join("product_images", f.name)):
         filename = difference_between_files + f.name
         print(f"file exists! f.name = {f.name}, new={filename}")
     else:
         filename = f.name
 
-    with open(f"media/product/photo/{filename}", "wb+") as destination:
+    with open(os.path.join("media/product_images", filename), "wb+") as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-        return f'product/photo/{filename}'
+    return f'product_images/{filename}'
 
 
 def create(request):
@@ -87,11 +96,11 @@ def create(request):
        - Цена за покупку price
        - Дата создания (записи в БД) created_at
        - Дата последнего изменения (записи в БД) updated_at
-       """
+    """
 
-    number = len(Product.objects.all())
+    number = Product.objects.count()
     if number > 5:
-        products_list = Product.objects.all()[number - 5: number + 1]
+        products_list = Product.objects.all()[number - 5:number]
     else:
         products_list = Product.objects.all()
 
@@ -107,22 +116,26 @@ def create(request):
         name = request.POST.get('name')
         description = request.POST.get('description')
         price = request.POST.get('price')
-        category = request.POST.get('category')
-        image = 'media/product_images' + str(request.POST.get('image'))
+        category_id = request.POST.get('category')
+        image = request.FILES.get('image')  # Получаем файл изображения из запроса
 
-        time_of_creation = (datetime.now()).strftime('%Y-%m-%d')
+        time_of_creation = datetime.now().strftime('%Y-%m-%d')
 
         try:
-            image = handle_uploaded_file(request.FILES['image'], f"{time_of_creation}_{name}_")
-        except:
+            image_path = handle_uploaded_file(image, f"{time_of_creation}_{name}_")
+        except KeyError:
             print("Отсутствует изображение")
-            image = None
+            image_path = None
 
-        info = {'created_at': time_of_creation,
-                'updated_at': time_of_creation,
-                'name': name, 'price': price, 'description': description,
-                'category': Category.objects.get(id=category), 'image': image
-                }
+        info = {
+            'created_at': time_of_creation,
+            'updated_at': time_of_creation,
+            'name': name,
+            'price': price,
+            'description': description,
+            'category': Category.objects.get(id=category_id),
+            'image': image_path
+        }
 
         print(info)
         Product.objects.create(**info)
