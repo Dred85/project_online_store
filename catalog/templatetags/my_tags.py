@@ -17,7 +17,7 @@ def current_time(format_string):
 
 
 @register.simple_tag
-def time_until_11_nov():
+def time_happy_b():
     now = datetime.datetime.today()
     present_year = now.year
 
