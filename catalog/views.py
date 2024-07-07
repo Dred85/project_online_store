@@ -10,14 +10,15 @@ from catalog.models import Product, Contact, Category
 def home(request):
     # Получение категорий
     list_category = Category.objects.order_by('name')
-
+    list_products = Product.objects.all()
     latest_products = Product.objects.order_by('-created_at')[:5]
 
     # Вывод последних пяти товаров в консоль
     for product in latest_products:
         print(product)
 
-    return render(request, 'main/home.html', {'latest_products': latest_products, 'list_category': list_category})
+    return render(request, 'main/home.html',
+                  {'latest_products': latest_products, 'list_category': list_category, 'list_products': list_products})
 
 
 def contacts(request):
@@ -30,16 +31,15 @@ def contacts(request):
             return redirect('contacts')
     return render(request, 'main/contacts.html', {'contact_info': contact_info})
 
-def catalog(request, page, per_page):
 
+def catalog(request, page, per_page):
     len_product = len(Product.objects.all())
     if len_product % per_page != 0:
-        page_count = [x+1 for x in range((len_product // per_page) + 1)]
+        page_count = [x + 1 for x in range((len_product // per_page) + 1)]
     else:
         page_count = [x + 1 for x in range((len_product // per_page))]
 
     product_list = Product.objects.all()[per_page * (page - 1): per_page * page]
-
 
     context = {
         "product_list": product_list,
@@ -48,8 +48,8 @@ def catalog(request, page, per_page):
         "page_count": page_count
     }
 
-
     return render(request, 'main/per_page.html', context)
+
 
 def product_detail(request, pk, page=None, per_page=None):
     _object = get_object_or_404(Product, pk=pk)
@@ -62,18 +62,19 @@ def product_detail(request, pk, page=None, per_page=None):
 
     return render(request, 'main/product_detail.html', context)
 
-def handle_uploaded_file(f, difference_between_files):
 
+def handle_uploaded_file(f, difference_between_files):
     if os.path.exists(os.path.join(f"media/product/photo/{f.name}")):
         filename = difference_between_files + f.name
         print(f"file exists! f.name = {f.name}, new={filename}")
     else:
-        filename  = f.name
+        filename = f.name
 
     with open(f"media/product/photo/{filename}", "wb+") as destination:
         for chunk in f.chunks():
             destination.write(chunk)
         return f'product/photo/{filename}'
+
 
 def create(request):
     """
@@ -87,18 +88,13 @@ def create(request):
        - Дата последнего изменения (записи в БД) updated_at
        """
 
-
-
     number = len(Product.objects.all())
     if number > 5:
         products_list = Product.objects.all()[number - 5: number + 1]
     else:
         products_list = Product.objects.all()
 
-
     category_list = Category.objects.all()
-
-
 
     context = {
         'object_list': products_list,
@@ -130,6 +126,4 @@ def create(request):
         print(info)
         Product.objects.create(**info)
 
-
     return render(request, 'main/create_product.html', context)
-
