@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Blog Posts</h1>
+  <ul>
+    {% for blogpost in blogposts %}
+      <li>
+        <a href="{% url 'blog:blogpost_detail' blogpost.pk %}">{{ blogpost.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'blog:blogpost_create' %}">Create new post</a>
+{% endblock %}
