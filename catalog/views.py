@@ -131,5 +131,5 @@ def create(request):
         Product.objects.create(**info)
 
 
-    return render(request, 'catalog/create_product.html', context)
+    return render(request, 'main/create_product.html', context)
 
