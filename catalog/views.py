@@ -18,7 +18,8 @@ def home(request):
         print(product)
 
     return render(request, 'main/home.html',
-                  {'latest_products': latest_products, 'list_category': list_category, 'list_products': list_products})
+                  {'latest_products': latest_products, 'list_category': list_category, 'list_products': list_products,
+                   'nums': [2, 3]})
 
 
 def contacts(request):

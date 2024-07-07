@@ -1,14 +1,20 @@
+{% load static %}
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Electron: {{title}}</h5>
-    <nav class="ms-5">
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:home' %}">Весь каталог</a>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'catalog:home' %}">
+                <img src="{% static 'image/el.jpeg' %}" alt="" width="30" height="24"
+                     class="d-inline-block align-text-top">
+                Bootstrap
+            </a>
+            <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:home' %}">Весь каталог</a>
 
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:catalog' 2 1 %}">2 товара из каталога</a>
+            {% for num in nums %}
+                <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:catalog' num 1 %}">{{ num }} товара из каталога</a>
+            {% endfor %}
 
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:catalog' 3 1 %}">3 товара из каталога</a>
-
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:create' %}">Создать продукт</a>
-
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts' %}">Контакты</a>
+            <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:create' %}">Создать продукт</a>
+            <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:contacts' %}">Контакты</a>
+        </div>
     </nav>
 </div>
