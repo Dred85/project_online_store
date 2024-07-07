@@ -1,15 +1,20 @@
 import os
-from datetime import datetime
 
-from django.shortcuts import render, redirect, get_object_or_404
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from catalog.models import Product, Contact, Category
-from django.views.generic import ListView, CreateView, DetailView
-from django.urls import reverse_lazy
-from catalog.models import Contact
-from catalog.forms import ContactForm, ProductForm
 
+from django.urls import reverse_lazy
+
+from catalog.forms import ContactForm, ProductForm
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    TemplateView,
+)
 
 class HomeView(ListView):
     model = Product
@@ -39,29 +44,43 @@ class ContactView(CreateView):
 class CatalogView(ListView):
     model = Product
     template_name = 'main/per_page.html'
-    paginate_by = 10
+    context_object_name = 'product_list'
+    paginate_by = 1
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         page = self.kwargs.get('page', 1)
         per_page = self.kwargs.get('per_page', 10)
-        len_product = Product.objects.count()
+        product_list = Product.objects.all()
+        paginator = Paginator(product_list, per_page)
 
-        if len_product % per_page != 0:
-            page_count = [x + 1 for x in range((len_product // per_page) + 1)]
-        else:
-            page_count = [x + 1 for x in range((len_product // per_page))]
+        try:
+            products = paginator.page(page)
+        except PageNotAnInteger:
+            products = paginator.page(1)
+        except EmptyPage:
+            products = paginator.page(paginator.num_pages)
 
+        context['product_list'] = products
         context['page'] = page
         context['per_page'] = per_page
-        context['page_count'] = page_count
+        context['page_count'] = paginator.num_pages
         return context
 
     def get_queryset(self):
-        page = self.kwargs.get('page', 1)
         per_page = self.kwargs.get('per_page', 10)
-        return Product.objects.all()[per_page * (page - 1): per_page * page]
+        product_list = Product.objects.all()
+        paginator = Paginator(product_list, per_page)
+        page = self.kwargs.get('page', 1)
 
+        try:
+            products = paginator.page(page)
+        except PageNotAnInteger:
+            products = paginator.page(1)
+        except EmptyPage:
+            products = paginator.page(paginator.num_pages)
+
+        return products
 
 class ProductDetailView(DetailView):
     model = Product
@@ -105,3 +124,16 @@ class ProductCreateView(CreateView):
         context['category_list'] = Category.objects.all()
         context['title'] = 'Добавить продукт'
         return context
+
+class ProductPaginate2ListView(ListView):
+    model = Product
+    paginate_by = 2
+    queryset = model.objects.all()  # Default: Model.objects.all()
+
+
+class ProductPaginate3ListView(ListView):
+    model = Product
+    paginate_by = 3
+    queryset = model.objects.all()  # Default: Model.objects.all()
+
+
