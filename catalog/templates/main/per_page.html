@@ -1,9 +1,9 @@
 {% extends 'main/base.html'%}
 {% load static %}
 {% load my_tags %}
+
+
 {% block content %}
-
-
 <div class="row text-right">
     {% for object in product_list %}
 
@@ -47,14 +47,11 @@
                 </p>
                 <div class="btn-group">
 
-                        {% for btn in page_count %}
+                    {% for btn in page_count %}
 
-                        <a class="p-2 btn btn-outline-primary"
-                           href="{% url 'catalog:catalog' per_page btn%}"
-                           role="button"> {{btn}} </a> &nbsp;
-
-
-
+                    <a class="p-2 btn btn-outline-primary"
+                       href="{% url 'catalog:catalog' per_page btn%}"
+                       role="button"> {{btn}} </a> &nbsp;
 
 
                     {% endfor %}
