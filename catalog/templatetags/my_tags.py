@@ -29,8 +29,8 @@ def time_until_11_nov():
     mm, ss = divmod(d.seconds, 60)
     hh, mm = divmod(mm, 60)
 
-    return 'До распродажи 11.11 осталось: {} дней'.format(d.days)
-    # return 'До распродажи 11.11 осталось: {} дней {} часа {} мин {} сек.'.format(d.days, hh, mm, ss)
+    return 'День рождения магазина Electron 08.11 осталось: {} дней'.format(d.days)
+
 
 
 # Создание фильтра
