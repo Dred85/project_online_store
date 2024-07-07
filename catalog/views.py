@@ -2,7 +2,7 @@ import os
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.text import slugify
-from catalog.models import Product, Contact, Category, BlogPost
+from catalog.models import Product, Contact, Category
 
 from django.urls import reverse_lazy
 
@@ -138,27 +138,3 @@ class ProductPaginate3ListView(ListView):
     queryset = model.objects.all()  # Default: Model.objects.all()
 
 
-class BlogPostListView(ListView):
-    model = BlogPost
-    template_name = 'blog/blogpost_list.html'
-    context_object_name = 'blogposts'
-
-class BlogPostDetailView(DetailView):
-    model = BlogPost
-    template_name = 'blog/blogpost_detail.html'
-    context_object_name = 'blogpost'
-
-class BlogPostCreateView(CreateView):
-    model = BlogPost
-    template_name = 'blog/blogpost_form.html'
-    fields = ['title', 'content', 'preview_image', 'is_published']
-
-class BlogPostUpdateView(UpdateView):
-    model = BlogPost
-    template_name = 'blog/blogpost_form.html'
-    fields = ['title', 'content', 'preview_image', 'is_published']
-
-class BlogPostDeleteView(DeleteView):
-    model = BlogPost
-    template_name = 'blog/blogpost_confirm_delete.html'
-    success_url = reverse_lazy('blog:blogpost_list')
