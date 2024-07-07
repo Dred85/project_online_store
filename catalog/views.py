@@ -108,14 +108,14 @@ def create(request):
         description = request.POST.get('description')
         price = request.POST.get('price')
         category = request.POST.get('category')
-        # image = 'product/photo/' + str(request.POST.get('image'))
+        image = 'media/product_images' + str(request.POST.get('image'))
 
         time_of_creation = (datetime.now()).strftime('%Y-%m-%d')
 
         try:
             image = handle_uploaded_file(request.FILES['image'], f"{time_of_creation}_{name}_")
         except:
-            print("Изображения-то нет...")
+            print("Отсутствует изображение")
             image = None
 
         info = {'created_at': time_of_creation,
