@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
+from django.urls import reverse_lazy
+from blog.models import BlogPost
 
-# Create your views here.
+
+class BlogCreateView(CreateView):
+    model = BlogPost
+    fields = ('title', 'content',)
+    success_url = reverse_lazy('BlogPost:list')

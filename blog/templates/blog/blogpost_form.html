@@ -1,4 +1,4 @@
-{% extends "base_generic.html" %}
+{% extends "main/base.html" %}
 
 {% block content %}
   <h1>{% if blogpost %}Edit{% else %}Create{% endif %} Blog Post</h1>
@@ -7,5 +7,5 @@
     {{ form.as_p }}
     <button type="submit">Save</button>
   </form>
-  <a href="{% url 'blog:blogpost_list' %}">Back to list</a>
+
 {% endblock %}
