@@ -6,4 +6,21 @@ from blog.models import BlogPost
 class BlogCreateView(CreateView):
     model = BlogPost
     fields = ('title', 'content',)
-    success_url = reverse_lazy('blog:home')
+    success_url = reverse_lazy('blog:list')
+
+class BlogListView(ListView):
+    model = BlogPost
+
+
+class BlogDetailView(DetailView):
+    model = BlogPost
+
+
+class BlogUpdateView(UpdateView):
+    model = BlogPost
+    fields = ('title', 'content')
+
+
+class BlogDeleteView(DeleteView):
+    model = BlogPost
+    success_url = reverse_lazy('blog:list')

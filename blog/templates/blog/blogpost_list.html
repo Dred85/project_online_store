@@ -1,13 +1,23 @@
-{% extends "base_generic.html" %}
+{% extends "main/base.html" %}
 
-{% block content %}
-  <h1>Blog Posts</h1>
-  <ul>
-    {% for blogpost in blogposts %}
-      <li>
-        <a href="{% url 'blog:blogpost_detail' blogpost.pk %}">{{ blogpost.title }}</a>
-      </li>
+{% load static %}
+{% block  content %}
+        <div class="container mb-2 mt-2">
+            <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">Добавить статью</a>
+        </div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for prod in object_list %}
+    <div class="col">
+        <div class="card shadow-sm">
+            <img src="{{ prod.avatar }}">
+            <div class="card-body">
+                <p class="card-text">{{ prod.name }}</p>
+                <div class="d-grid gap-2 d-md-block">
+
+                </div>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-  </ul>
-  <a href="{% url 'blog:blogpost_create' %}">Create new post</a>
+</div>
 {% endblock %}
