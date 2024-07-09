@@ -1,12 +1,20 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-  <h1>{{ blogpost.title }}</h1>
-  <img src="{{ blogpost.preview_image.url }}" alt="Preview Image">
-  <p>{{ blogpost.content }}</p>
-  <p>Views: {{ blogpost.views_count }}</p>
-  <p>Published: {{ blogpost.is_published }}</p>
-  <a href="{% url 'blog:edit' object.pk %}">Edit</a>
-  <a href="{% url 'blog:delete' object.pk %}">Delete</a>
-  <a href="{% url 'blog:list' %}">Back to list</a>
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <h1 style="text-align: left;">{{ blogpost.title }}</h1>
+    {% if blogpost.preview_image %}
+      <img src="{{ blogpost.preview_image.url }}" alt="Preview Image" style="display: block; margin: 0 auto; max-width: 100%;">
+    {% else %}
+      <p style="text-align: left;">No preview image available.</p>
+    {% endif %}
+    <p>{{ blogpost.content }}</p>
+    <p style="text-align: left;">Views: {{ blogpost.views_count }}</p>
+    <p style="text-align: left;">Published: {{ blogpost.is_published }}</p>
+    <div style="text-align: left;">
+      <a href="{% url 'blog:edit' blogpost.pk %}" style="margin-right: 10px;">Edit</a>
+      <a href="{% url 'blog:delete' blogpost.pk %}" style="margin-right: 10px;">Delete</a>
+      <a href="{% url 'blog:list' %}">Back to list</a>
+    </div>
+  </div>
 {% endblock %}
