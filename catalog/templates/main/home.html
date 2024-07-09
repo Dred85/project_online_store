@@ -37,7 +37,7 @@
                         <ul class="list-group">
                             {% for product in latest_products %}
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ product.name }}
+                                {{ product.name | truncatechars:100}}
                                 <span class="badge bg-primary rounded-pill">{{ product.price }}</span>
                             </li>
                             {% endfor %}
@@ -59,7 +59,8 @@
                             <ul class="list-group">
                                 {% for product in list_products %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    {{ product.name }}
+                                    {{ product.name | truncatechars:100 }} <br>
+                                    {{ product.description | truncatechars:100 }}
                                     <span class="badge bg-primary rounded-pill">{{ product.price }}</span>
                                 </li>
                                 {% endfor %}
