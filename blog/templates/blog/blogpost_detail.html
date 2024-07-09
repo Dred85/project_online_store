@@ -6,7 +6,7 @@
   <p>{{ blogpost.content }}</p>
   <p>Views: {{ blogpost.views_count }}</p>
   <p>Published: {{ blogpost.is_published }}</p>
-  <a href="{% url 'blog:update' blogpost.pk %}">Edit</a>
-  <a href="{% url 'blog:delete' blogpost.pk %}">Delete</a>
+  <a href="{% url 'blog:edit' object.pk %}">Edit</a>
+  <a href="{% url 'blog:delete' object.pk %}">Delete</a>
   <a href="{% url 'blog:list' %}">Back to list</a>
 {% endblock %}

@@ -8,6 +8,12 @@ class BlogCreateView(CreateView):
     fields = ('title', 'content',)
     success_url = reverse_lazy('blog:list')
 
+class BlogUpdateView(UpdateView):
+    model = BlogPost
+    fields = ('title', 'content')
+    success_url = reverse_lazy('blog:list')
+
+
 class BlogListView(ListView):
     model = BlogPost
 
@@ -16,9 +22,6 @@ class BlogDetailView(DetailView):
     model = BlogPost
 
 
-class BlogUpdateView(UpdateView):
-    model = BlogPost
-    fields = ('title', 'content')
 
 
 class BlogDeleteView(DeleteView):
