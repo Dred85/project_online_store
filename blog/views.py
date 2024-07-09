@@ -4,6 +4,7 @@ from blog.models import BlogPost
 from django.shortcuts import render, get_object_or_404
 from datetime import datetime
 import os
+from django.urls import reverse
 from pytils.translit import slugify
 from blog.functions.utils import send_email
 
