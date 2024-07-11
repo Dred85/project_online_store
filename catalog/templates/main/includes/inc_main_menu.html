@@ -13,7 +13,8 @@
                 <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:catalog' num 1 %}">{{ num }} товара из каталога</a>
             {% endfor %}
 
-            <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:create' %}">Создать продукт</a>
+            <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:create_product' %}">Создать продукт</a>
+            <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'blog:list' %}">Блог</a>
             <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:contacts' %}">Контакты</a>
         </div>
     </nav>
