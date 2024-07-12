@@ -46,33 +46,23 @@ class CatalogView(ListView):
     model = Product
     template_name = 'main/per_page.html'
     context_object_name = 'product_list'
-    paginate_by = 1
+
+    def get_paginate_by(self, queryset):
+        # Получаем значение per_page из URL, если не задано, используем значение по умолчанию 10
+        return self.kwargs.get('per_page', 10)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        page = self.kwargs.get('page', 1)
-        per_page = self.kwargs.get('per_page', 10)
-        product_list = Product.objects.all()
-        paginator = Paginator(product_list, per_page)
-
-        try:
-            products = paginator.page(page)
-        except PageNotAnInteger:
-            products = paginator.page(1)
-        except EmptyPage:
-            products = paginator.page(paginator.num_pages)
-
-        context['product_list'] = products
-        context['page'] = page
-        context['per_page'] = per_page
-        context['page_count'] = paginator.num_pages
+        context['page'] = self.kwargs.get('page', 1)
+        context['per_page'] = self.get_paginate_by(self.get_queryset())
+        context['page_count'] = self.paginate_by
         return context
 
     def get_queryset(self):
-        per_page = self.kwargs.get('per_page', 10)
-        product_list = Product.objects.all()
-        paginator = Paginator(product_list, per_page)
+        queryset = Product.objects.all()
         page = self.kwargs.get('page', 1)
+        per_page = self.get_paginate_by(queryset)
+        paginator = Paginator(queryset, per_page)
 
         try:
             products = paginator.page(page)
@@ -82,6 +72,23 @@ class CatalogView(ListView):
             products = paginator.page(paginator.num_pages)
 
         return products
+
+    def paginate_queryset(self, queryset, page_size):
+        paginator = self.get_paginator(queryset, page_size)
+        page = self.kwargs.get(self.page_kwarg, 1)
+        try:
+            page_number = int(page)
+        except (TypeError, ValueError):
+            page_number = 1
+
+        try:
+            page = paginator.page(page_number)
+        except (PageNotAnInteger, EmptyPage):
+            page = paginator.page(1)
+        return (paginator, page, page.object_list, page.has_other_pages())
+
+    def get_paginator(self, queryset, per_page):
+        return Paginator(queryset, per_page)
 
 class ProductDetailView(DetailView):
     model = Product
