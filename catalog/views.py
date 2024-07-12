@@ -64,6 +64,8 @@ class CatalogView(ListView):
         per_page = self.get_paginate_by(queryset)
         paginator = Paginator(queryset, per_page)
 
+
+
         try:
             products = paginator.page(page)
         except PageNotAnInteger:
