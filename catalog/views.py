@@ -152,12 +152,14 @@ def handle_uploaded_file(f, difference_between_files):
 
 class ProductPaginate2ListView(ListView):
     model = Product
+    template_name = 'main/product_detail.html'
     paginate_by = 2
     queryset = Product.objects.all()
 
 
 class ProductPaginate3ListView(ListView):
     model = Product
+    template_name = 'main/product_detail.html'
     paginate_by = 3
     queryset = Product.objects.all()
 
