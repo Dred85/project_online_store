@@ -39,7 +39,7 @@ class ProductCreateView(CreateView):
     model = Product
     template_name = 'main/product_form.html'
     fields = ('name', 'description', 'image', 'category', 'price')
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('catalog:product_list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -62,6 +62,7 @@ class ProductUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
+    template_name = 'main/product_confirm_delete.html'
     success_url = reverse_lazy('catalog:product_list')
 
 class ContactView(CreateView):
