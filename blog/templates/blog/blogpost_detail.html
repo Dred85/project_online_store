@@ -2,12 +2,12 @@
 
 {% block content %}
 <div style="max-width: 1100px; margin: 0 auto;">
-    <h1 style="text-align: left;">{{ blogpost.title }}</h1>
+    <h1 style="text-align: left;">Статья:"{{ object.title }}" ({{object.slug}})</h1>
     {% if blogpost.preview_image %}
     <img src="{{ blogpost.preview_image.url }}" alt="Preview Image"
          style="display: block; margin: 0 auto; max-width: 100%;">
     {% else %}
-    <p style="text-align: left;">No preview image available.</p>
+    <p style="text-align: left;">Изображение для предварительного просмотра недоступно.</p>
     {% endif %}
     <p>{{ blogpost.content }}</p>
     <p style="text-align: left;">Просмотры: {{ blogpost.views_count }}</p>
