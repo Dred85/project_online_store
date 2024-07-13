@@ -7,7 +7,7 @@
                      class="d-inline-block align-text-top">
                 Bootstrap
             </a>
-            <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:home' %}">Весь каталог</a>
+            <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:products_list' %}">Все товары</a>
 
             {% for num in nums %}
                 <a class="p-2 btn btn-outline-primary mx-2" href="{% url 'catalog:catalog' num 1 %}">{{ num }} товара из каталога</a>

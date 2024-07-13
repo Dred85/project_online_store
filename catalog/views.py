@@ -22,6 +22,8 @@ class HomeView(ListView):
     context_object_name = 'latest_products'
     queryset = Product.objects.order_by('-created_at')[:5]
 
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['list_category'] = Category.objects.order_by('name')
@@ -29,6 +31,52 @@ class HomeView(ListView):
         context['nums'] = [2, 3]
         return context
 
+class ProductListView(ListView):
+    model = Product
+    template_name = 'main/products_list.html'
+
+class ProductCreateView(CreateView):
+    model = Product
+
+    # fields = ('name', 'description')
+
+    template_name = 'main/create_product.html'
+    form_class = ProductForm
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        number = Product.objects.count()
+        if number > 5:
+            products_list = Product.objects.all()[number - 5:number]
+        else:
+            products_list = Product.objects.all()
+        context['object_list'] = products_list
+        context['category_list'] = Category.objects.all()
+        context['title'] = 'Добавить продукт'
+        return context
+
+class ProductPaginate2ListView(ListView):
+    model = Product
+    paginate_by = 2
+    queryset = Product.objects.all()
+
+
+class ProductPaginate3ListView(ListView):
+    model = Product
+    paginate_by = 3
+    queryset = Product.objects.all()
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    fields = ('title', 'description')
+    success_url = reverse_lazy('catalog:products')
+
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:products')
 
 class ContactView(CreateView):
     model = Contact
@@ -45,7 +93,7 @@ class ContactView(CreateView):
 class CatalogView(ListView):
     model = Product
     template_name = 'main/per_page.html'
-    context_object_name = 'product_list'
+    context_object_name = 'products_list'
 
     def get_paginate_by(self, queryset):
         # Получаем значение per_page из URL, если не задано, используем значение по умолчанию 10
@@ -63,8 +111,6 @@ class CatalogView(ListView):
         page = self.kwargs.get('page', 1)
         per_page = self.get_paginate_by(queryset)
         paginator = Paginator(queryset, per_page)
-
-
 
         try:
             products = paginator.page(page)
@@ -117,36 +163,8 @@ def handle_uploaded_file(f, difference_between_files):
     return f'product_images/{filename}'
 
 
-class ProductCreateView(CreateView):
-    model = Product
-
-    # fields = ('name', 'description')
-
-    template_name = 'main/create_product.html'
-    form_class = ProductForm
-    success_url = reverse_lazy('home')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        number = Product.objects.count()
-        if number > 5:
-            products_list = Product.objects.all()[number - 5:number]
-        else:
-            products_list = Product.objects.all()
-        context['object_list'] = products_list
-        context['category_list'] = Category.objects.all()
-        context['title'] = 'Добавить продукт'
-        return context
-
-class ProductPaginate2ListView(ListView):
-    model = Product
-    paginate_by = 2
-    queryset = Product.objects.all()
 
 
-class ProductPaginate3ListView(ListView):
-    model = Product
-    paginate_by = 3
-    queryset = Product.objects.all()
+
 
 
