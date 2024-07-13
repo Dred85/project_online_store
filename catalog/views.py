@@ -33,15 +33,12 @@ class HomeView(ListView):
 
 class ProductListView(ListView):
     model = Product
-    template_name = 'main/products_list.html'
+    template_name = 'main/product_list.html'
 
 class ProductCreateView(CreateView):
     model = Product
-
-    # fields = ('name', 'description')
-
-    template_name = 'main/create_product.html'
-    form_class = ProductForm
+    template_name = 'main/product_form.html'
+    fields = ('name', 'description', 'image', 'category', 'price')
     success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
@@ -56,27 +53,16 @@ class ProductCreateView(CreateView):
         context['title'] = 'Добавить продукт'
         return context
 
-class ProductPaginate2ListView(ListView):
-    model = Product
-    paginate_by = 2
-    queryset = Product.objects.all()
-
-
-class ProductPaginate3ListView(ListView):
-    model = Product
-    paginate_by = 3
-    queryset = Product.objects.all()
 
 class ProductUpdateView(UpdateView):
     model = Product
-    fields = ('title', 'description')
-    success_url = reverse_lazy('catalog:products')
-
-
+    template_name = 'main/product_form.html'
+    fields = ('name', 'description', 'image', 'category', 'price')
+    success_url = reverse_lazy('catalog:product_list')
 
 class ProductDeleteView(DeleteView):
     model = Product
-    success_url = reverse_lazy('catalog:products')
+    success_url = reverse_lazy('catalog:product_list')
 
 class ContactView(CreateView):
     model = Contact
@@ -163,6 +149,16 @@ def handle_uploaded_file(f, difference_between_files):
     return f'product_images/{filename}'
 
 
+class ProductPaginate2ListView(ListView):
+    model = Product
+    paginate_by = 2
+    queryset = Product.objects.all()
+
+
+class ProductPaginate3ListView(ListView):
+    model = Product
+    paginate_by = 3
+    queryset = Product.objects.all()
 
 
 
