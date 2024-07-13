@@ -9,16 +9,6 @@
         <div class="card box-shadow">
             <div class="card-body">
                 <h2 class="card-title">Контактная информация</h2>
-                <ul class="list-group list-group-flush">
-                    {% for contact in contact_info %}
-                    <li class="list-group-item">
-                        <strong>{{ contact.name }}</strong><br>
-                        Email: {{ contact.email }}<br>
-                        Телефон: {{ contact.phone }}<br>
-                        Адрес: {{ contact.address }}
-                    </li>
-                    {% endfor %}
-                </ul>
                 <table class="table table-striped mt-4">
                     <tbody>
                     <tr>
@@ -35,6 +25,18 @@
                     </tr>
                     </tbody>
                 </table>
+
+                <ul class="list-group list-group-flush">
+                    {% for contact in contact_info %}
+                    <li class="list-group-item">
+                        <strong>{{ contact.name }}</strong><br>
+                        Email: {{ contact.email }}<br>
+                        Телефон: {{ contact.phone }}<br>
+                        Адрес: {{ contact.address }}
+                    </li>
+                    {% endfor %}
+                </ul>
+
             </div>
         </div>
     </div>

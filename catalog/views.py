@@ -119,6 +119,9 @@ def handle_uploaded_file(f, difference_between_files):
 
 class ProductCreateView(CreateView):
     model = Product
+
+    # fields = ('name', 'description')
+
     template_name = 'main/create_product.html'
     form_class = ProductForm
     success_url = reverse_lazy('home')
@@ -138,12 +141,12 @@ class ProductCreateView(CreateView):
 class ProductPaginate2ListView(ListView):
     model = Product
     paginate_by = 2
-    queryset = model.objects.all()  # Default: Model.objects.all()
+    queryset = Product.objects.all()
 
 
 class ProductPaginate3ListView(ListView):
     model = Product
     paginate_by = 3
-    queryset = model.objects.all()  # Default: Model.objects.all()
+    queryset = Product.objects.all()
 
 
