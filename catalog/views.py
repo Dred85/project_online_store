@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.text import slugify
 from catalog.models import Product, Contact, Category
 
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 from catalog.forms import ContactForm, ProductForm
 from django.views.generic import (
@@ -59,6 +59,9 @@ class ProductUpdateView(UpdateView):
     template_name = 'main/product_form.html'
     fields = ('name', 'description', 'image', 'category', 'price')
     success_url = reverse_lazy('catalog:product_list')
+
+    def get_success_url(self):
+        return reverse('catalog:product_detail')
 
 class ProductDeleteView(DeleteView):
     model = Product
