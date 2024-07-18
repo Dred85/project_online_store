@@ -22,8 +22,6 @@ class HomeView(ListView):
     context_object_name = 'latest_products'
     queryset = Product.objects.order_by('-created_at')[:5]
 
-
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['list_category'] = Category.objects.order_by('name')
@@ -34,6 +32,7 @@ class HomeView(ListView):
 class ProductListView(ListView):
     model = Product
     template_name = 'main/product_list.html'
+
 
 class ProductCreateView(CreateView):
     model = Product
@@ -152,14 +151,14 @@ def handle_uploaded_file(f, difference_between_files):
 
 class ProductPaginate2ListView(ListView):
     model = Product
-    template_name = 'main/product_detail.html'
+    template_name = 'main/per_page.html'
     paginate_by = 2
     queryset = Product.objects.all()
 
 
 class ProductPaginate3ListView(ListView):
     model = Product
-    template_name = 'main/product_detail.html'
+    template_name = 'main/per_page.html'
     paginate_by = 3
     queryset = Product.objects.all()
 
