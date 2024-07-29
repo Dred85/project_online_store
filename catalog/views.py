@@ -16,13 +16,12 @@ from django.views.generic import (
     TemplateView,
 )
 
+
 class HomeView(ListView):
     model = Product
     template_name = 'main/home.html'
     context_object_name = 'latest_products'
     queryset = Product.objects.order_by('-created_at')[:5]
-
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,14 +30,16 @@ class HomeView(ListView):
         context['nums'] = [2, 3]
         return context
 
+
 class ProductListView(ListView):
     model = Product
     template_name = 'main/product_list.html'
 
+
 class ProductCreateView(CreateView):
     model = Product
+    form_class = ProductForm
     template_name = 'main/product_form.html'
-    fields = ('name', 'description', 'image', 'category', 'price')
     success_url = reverse_lazy('catalog:product_list')
 
     def get_context_data(self, **kwargs):
@@ -56,17 +57,16 @@ class ProductCreateView(CreateView):
 
 class ProductUpdateView(UpdateView):
     model = Product
+    form_class = ProductForm
     template_name = 'main/product_form.html'
-    fields = ('name', 'description', 'image', 'category', 'price')
     success_url = reverse_lazy('catalog:product_list')
 
-    def get_success_url(self):
-        return reverse('catalog:product_detail')
 
 class ProductDeleteView(DeleteView):
     model = Product
     template_name = 'main/product_confirm_delete.html'
     success_url = reverse_lazy('catalog:product_list')
+
 
 class ContactView(CreateView):
     model = Contact
@@ -128,6 +128,7 @@ class CatalogView(ListView):
     def get_paginator(self, queryset, per_page):
         return Paginator(queryset, per_page)
 
+
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'main/product_detail.html'
@@ -165,8 +166,3 @@ class ProductPaginate3ListView(ListView):
     template_name = 'main/product_detail.html'
     paginate_by = 3
     queryset = Product.objects.all()
-
-
-
-
-
