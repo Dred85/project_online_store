@@ -43,18 +43,25 @@ class ProductListView(ListView):
     context_object_name = 'products'
 
     def get_context_data(self, **kwargs):
+        # Получаем контекст из родительского класса
         context = super().get_context_data(**kwargs)
-        products_with_versions = []
 
-        for product in context['products']:
-            current_version = product.versions.filter(is_current=True).first()
-            products_with_versions.append({
-                'product': product,
-                'current_version': current_version
-            })
+        # Получаем все продукты
+        products = context['products']
 
-        context['products_with_versions'] = products_with_versions
+        # Создаем словарь для хранения текущих версий
+        current_versions = {}
+
+        # Ищем текущую версию для каждого продукта
+        for product in products:
+            current_version = Version.objects.filter(product=product, is_current=True).first()
+            current_versions[product.id] = current_version
+
+        # Добавляем текущие версии в контекст
+        context['current_versions'] = current_versions
+
         return context
+
 
 
 class ProductCreateView(CreateView):

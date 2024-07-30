@@ -51,4 +51,4 @@ class ProductForm(forms.ModelForm):
 class ProductVersionForm(StyledFormMixin, forms.ModelForm):
     class Meta:
         model = Version
-        exclude = ('is_current', )
+        fields = ('version_number', 'version_name')
