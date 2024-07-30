@@ -2,11 +2,16 @@ import os
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.text import slugify
-from catalog.models import Product, Contact, Category
+
+from catalog import forms
+from catalog.mixins import StyledFormMixin
+from catalog.models import Product, Contact, Category, Version
 
 from django.urls import reverse_lazy, reverse
 
-from catalog.forms import ContactForm, ProductForm
+from django.forms import inlineformset_factory
+
+from catalog.forms import ContactForm, ProductForm, ProductVersionForm
 from django.views.generic import (
     ListView,
     DetailView,
@@ -35,6 +40,22 @@ class ProductListView(ListView):
     model = Product
     template_name = 'main/product_list.html'
 
+    context_object_name = 'products'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        products_with_versions = []
+
+        for product in context['products']:
+            current_version = product.versions.filter(is_current=True).first()
+            products_with_versions.append({
+                'product': product,
+                'current_version': current_version
+            })
+
+        context['products_with_versions'] = products_with_versions
+        return context
+
 
 class ProductCreateView(CreateView):
     model = Product
@@ -60,6 +81,29 @@ class ProductUpdateView(UpdateView):
     form_class = ProductForm
     template_name = 'main/product_form.html'
     success_url = reverse_lazy('catalog:product_list')
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        ProductFormset = inlineformset_factory(Product, Version, form=ProductVersionForm, extra=1)
+        if self.request.method == 'POST':
+            context_data["formset"] = ProductFormset(self.request.POST, instance=self.object)
+        else:
+            context_data["formset"] = ProductFormset(instance=self.object)
+        return context_data
+
+    def form_valid(self, form):
+        context_data = self.get_context_data()
+        formset = context_data["formset"]
+        if form.is_valid() and formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return super().form_valid(form)
+
+        else:
+            return self.render_to_response(self.get_context_data(form=form, formset=formset))
+
+
 
 
 class ProductDeleteView(DeleteView):
@@ -166,3 +210,6 @@ class ProductPaginate3ListView(ListView):
     template_name = 'main/product_detail.html'
     paginate_by = 3
     queryset = Product.objects.all()
+
+
+

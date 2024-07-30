@@ -1,7 +1,9 @@
 from datetime import datetime
 
 from django import forms
-from .models import Contact, Product
+
+from .mixins import StyledFormMixin
+from .models import Contact, Product, Version
 
 
 class ContactForm(forms.ModelForm):
@@ -44,3 +46,9 @@ class ProductForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+
+class ProductVersionForm(StyledFormMixin, forms.ModelForm):
+    class Meta:
+        model = Version
+        exclude = ('is_current', )
