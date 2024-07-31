@@ -1,13 +1,10 @@
 import os
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.utils.text import slugify
 
-from catalog import forms
-from catalog.mixins import StyledFormMixin
 from catalog.models import Product, Contact, Category, Version
 
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 
 from django.forms import inlineformset_factory
 
@@ -18,7 +15,6 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     DeleteView,
-    TemplateView,
 )
 
 
@@ -61,7 +57,6 @@ class ProductListView(ListView):
         context['current_versions'] = current_versions
 
         return context
-
 
 
 class ProductCreateView(CreateView):
@@ -111,8 +106,6 @@ class ProductUpdateView(UpdateView):
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
 
-
-
 class ProductDeleteView(DeleteView):
     model = Product
     template_name = 'main/product_confirm_delete.html'
@@ -136,9 +129,9 @@ class CatalogView(ListView):
     template_name = 'main/per_page.html'
     context_object_name = 'products_list'
 
-    def get_paginate_by(self, queryset):
-        # Получаем значение per_page из URL, если не задано, используем значение по умолчанию 10
-        return self.kwargs.get('per_page', 10)
+    # def get_paginate_by(self, queryset):
+    #     # Получаем значение per_page из URL, если не задано, используем значение по умолчанию 10
+    #     return self.kwargs.get('per_page', 10)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -147,20 +140,20 @@ class CatalogView(ListView):
         context['page_count'] = self.paginate_by
         return context
 
-    def get_queryset(self):
-        queryset = Product.objects.all()
-        page = self.kwargs.get('page', 1)
-        per_page = self.get_paginate_by(queryset)
-        paginator = Paginator(queryset, per_page)
-
-        try:
-            products = paginator.page(page)
-        except PageNotAnInteger:
-            products = paginator.page(1)
-        except EmptyPage:
-            products = paginator.page(paginator.num_pages)
-
-        return products
+    # def get_queryset(self):
+    #     queryset = Product.objects.all()
+    #     page = self.kwargs.get('page', 1)
+    #     per_page = self.get_paginate_by(queryset)
+    #     paginator = Paginator(queryset, per_page)
+    #
+    #     try:
+    #         products = paginator.page(page)
+    #     except PageNotAnInteger:
+    #         products = paginator.page(1)
+    #     except EmptyPage:
+    #         products = paginator.page(paginator.num_pages)
+    #
+    #     return products
 
     def paginate_queryset(self, queryset, page_size):
         paginator = self.get_paginator(queryset, page_size)
@@ -176,8 +169,8 @@ class CatalogView(ListView):
             page = paginator.page(1)
         return (paginator, page, page.object_list, page.has_other_pages())
 
-    def get_paginator(self, queryset, per_page):
-        return Paginator(queryset, per_page)
+    # def get_paginator(self, queryset, per_page):
+    #     return Paginator(queryset, per_page)
 
 
 class ProductDetailView(DetailView):
@@ -217,6 +210,3 @@ class ProductPaginate3ListView(ListView):
     template_name = 'main/product_detail.html'
     paginate_by = 3
     queryset = Product.objects.all()
-
-
-
