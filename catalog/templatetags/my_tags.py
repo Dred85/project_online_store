@@ -73,3 +73,9 @@ def media_filter(path):
         return f'/media/{path}'
 
     return '/static/image/no_image.png'
+
+
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)

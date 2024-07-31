@@ -1,6 +1,7 @@
-<!DOCTYPE html>
 {% load static %}
 {% load my_tags %}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -47,6 +48,15 @@
 {% block content %}
 {% endblock %}
 
+<nav class="list-pages">
+    <ul>
+        {% for p in paginator.page_range %}
+        <li class="page-num">
+            <a href="?page={{ p }}">{{ p }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
 
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
     <div class="row">
