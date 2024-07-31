@@ -1,7 +1,5 @@
 import os
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
 from catalog.models import Product, Contact, Category, Version
 
 from django.urls import reverse_lazy
@@ -22,6 +20,7 @@ class HomeView(ListView):
     model = Product
     template_name = 'main/home.html'
     context_object_name = 'latest_products'
+    paginate_by = 10
     queryset = Product.objects.order_by('-created_at')[:5]
 
     def get_context_data(self, **kwargs):
@@ -125,10 +124,10 @@ class ContactView(CreateView):
 
 
 class CatalogView(ListView):
+    paginate_by = 3
     model = Product
     template_name = 'main/per_page.html'
     context_object_name = 'products_list'
-    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -136,24 +135,6 @@ class CatalogView(ListView):
         context['per_page'] = self.get_paginate_by(self.get_queryset())
         context['page_count'] = self.paginate_by
         return context
-
-
-    def paginate_queryset(self, queryset, page_size):
-        paginator = self.get_paginator(queryset, page_size)
-        page = self.kwargs.get(self.page_kwarg, 1)
-        try:
-            page_number = int(page)
-        except (TypeError, ValueError):
-            page_number = 1
-
-        try:
-            page = paginator.page(page_number)
-        except (PageNotAnInteger, EmptyPage):
-            page = paginator.page(1)
-        return (paginator, page, page.object_list, page.has_other_pages())
-
-    def get_paginator(self, queryset, per_page):
-        return Paginator(queryset, per_page)
 
 
 class ProductDetailView(DetailView):
@@ -179,17 +160,3 @@ def handle_uploaded_file(f, difference_between_files):
         for chunk in f.chunks():
             destination.write(chunk)
     return f'product_images/{filename}'
-
-
-class ProductPaginate2ListView(ListView):
-    model = Product
-    template_name = 'main/product_detail.html'
-    paginate_by = 2
-    queryset = Product.objects.all()
-
-
-class ProductPaginate3ListView(ListView):
-    model = Product
-    template_name = 'main/product_detail.html'
-    paginate_by = 3
-    queryset = Product.objects.all()
