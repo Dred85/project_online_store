@@ -34,35 +34,6 @@
 
     </div>
     {% endfor %}
-    <div class="col-12">
-        <div class="card mb-3 box-shadow">
-
-            <div class="card-body">
-                <h5 class="card-title">
-                    <div style="color: orange"><b>Страница {{page}} из {{page_count|length}}, вывод по {{per_page}}
-                        позиции</b></div>
-                </h5>
-                <p class="card-text">
-
-                </p>
-                <div class="btn-group">
-
-                    {% for btn in page_count %}
-
-                    <a class="p-2 btn btn-outline-primary"
-                       href="{% url 'catalog:catalog' per_page btn%}"
-                       role="button"> {{btn}} </a> &nbsp;
-
-
-                    {% endfor %}
-
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
 
 </div>
 
