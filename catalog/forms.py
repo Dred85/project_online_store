@@ -11,7 +11,12 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ['name', 'email', 'phone', 'address', 'message']
 
+
 class ProductForm(forms.ModelForm):
+    PROHIBITED_WORDS = [
+        'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
+    ]
+
     class Meta:
         model = Product
         fields = ['name', 'description', 'price', 'category', 'image']
@@ -24,20 +29,25 @@ class ProductForm(forms.ModelForm):
         }
 
     def clean_name(self):
-        PROHIBITED_WORDS = [
-            'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
-        ]
         cleaned_data = self.cleaned_data['name']
-        for word in PROHIBITED_WORDS:
+        for word in self.PROHIBITED_WORDS:
             if word in cleaned_data.lower():
-                raise forms.ValidationError("Имя не должно содержать запрещенные слова:'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар'")
+                raise forms.ValidationError(
+                    f"Имя не должно содержать запрещенные слова: {', '.join(self.PROHIBITED_WORDS)}")
         return cleaned_data
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def clean_description(self):
+        cleaned_data = self.cleaned_data['description']
+        for word in self.PROHIBITED_WORDS:
+            if word in cleaned_data.lower():
+                raise forms.ValidationError(
+                    f"Описание не должно содержать запрещенные слова: {', '.join(self.PROHIBITED_WORDS)}")
+        return cleaned_data
+
+    def init(self, *args, **kwargs):
+        super().init(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-
 
     def save(self, commit=True):
         instance = super().save(commit=False)
