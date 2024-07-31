@@ -1,7 +1,7 @@
-
 import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
+
 
 def send_email(blog):
     # Учетные данные для отправки письма
@@ -19,6 +19,7 @@ def send_email(blog):
     msg["To"] = ", ".join(email_to)
 
     # Установление соединения с SMTP сервером
+    s = None  # Инициализируем s как None
     try:
         s = smtplib.SMTP("smtp.yandex.ru", 587, timeout=10)
         s.starttls()  # Начинаем TLS для безопасности
@@ -27,8 +28,5 @@ def send_email(blog):
     except Exception as e:
         print(f"Ошибка при отправке email: {e}")
     finally:
-        s.quit()  # Завершаем соединение с сервером
-
-# Пример использования (предполагается, что `blog` - это объект с атрибутами `name` и `views_count`)
-# send_email(blog)
-
+        if s:  # Проверяем, что s был создан
+            s.quit()  # Завершаем соединение с сервером.
