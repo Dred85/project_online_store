@@ -9,6 +9,19 @@
     <title>Electron</title>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
+    <style>
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+</style>
+
 </head>
 <body>
 {% include 'main/includes/inc_main_menu.html' %}
@@ -48,14 +61,10 @@
 {% block content %}
 {% endblock %}
 
-<nav class="list-pages">
-    <ul>
+<nav class="pagination">
         {% for p in paginator.page_range %}
-        <li class="page-num">
             <a href="?page={{ p }}">{{ p }}</a>
-        </li>
         {% endfor %}
-    </ul>
 </nav>
 
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
