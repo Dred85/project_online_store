@@ -1,7 +1,9 @@
 {% extends "main/base.html" %}
-
 {% load static %}
-{% block  content %}
+{% load static %}
+{% load my_tags %}
+
+{% block content %}
 <div class="container mb-2 mt-2">
     <a class="btn btn-primary" href="{% url 'catalog:create_product' %}" role="button">Добавить продукт</a>
 
@@ -14,6 +16,18 @@
             <div class="card-body">
                 <p class="card-text">
                     {{ object | title }}
+                    <br>
+                    <b>Наименование: </b>{{object.name}}
+                    <br> <br>
+                <div class="card-body">
+                    <img src="{{object.image|media_filter}}" class="card-img-top" alt={{object.image|media_filter}}>
+
+                </div>
+
+                <b>Категория: </b>{{object.category}}
+                <br> <br>
+                <b>Цена: </b>{{object.price}}
+                <br><br>
                 </p>
                 <div class="d-grid gap-2 d-md-block">
                     <div class="btn-group">
@@ -23,6 +37,16 @@
 
                         <a class="btn btn-danger" href="{% url 'catalog:delete_product' object.pk %}" role="button">Удалить</a>
                     </div>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for category in list_category %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ category.name }}
+                            <span class="badge bg-primary rounded-pill">{{ category.description }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
