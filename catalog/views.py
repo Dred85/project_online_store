@@ -34,6 +34,7 @@ class HomeView(ListView):
 class ProductListView(ListView):
     model = Product
     template_name = 'main/product_list.html'
+    paginate_by = 3
 
     context_object_name = 'products'
 
