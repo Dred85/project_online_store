@@ -1,9 +1,7 @@
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from blog.models import BlogPost
-from django.shortcuts import render, get_object_or_404
-from datetime import datetime
-import os
+
 from django.urls import reverse
 from pytils.translit import slugify
 from blog.functions.utils import send_email
@@ -28,9 +26,17 @@ class BlogCreateView(CreateView):
             new_blog.save()
         return super().form_valid(form)
 
+
 class BlogUpdateView(UpdateView):
     model = BlogPost
-    fields = ('title', 'content')
+    fields = (
+        "title",
+        "content",
+        "preview_image",
+        "is_published",
+        "views_count",
+    )
+
     # success_url = reverse_lazy('blog:list')
 
     def form_valid(self, form):
@@ -46,6 +52,8 @@ class BlogUpdateView(UpdateView):
 
 class BlogListView(ListView):
     model = BlogPost
+    template_name = 'blog/list.html'
+    paginate_by = 3
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
@@ -61,12 +69,10 @@ class BlogDetailView(DetailView):
         self.object.views_count += 1
         self.object.save()
 
-        if self.object.views_count == 100:
+        if self.object.views_count >= 10:
             send_email(self.object)
 
         return self.object
-
-
 
 
 class BlogDeleteView(DeleteView):

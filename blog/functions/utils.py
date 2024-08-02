@@ -1,31 +1,32 @@
-
 import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
-from decouple import config
+
 
 def send_email(blog):
-    login = config('EMAIL_USER')
-    password = config('EMAIL_PASSWORD')
-    print(login)
-    print(password)
-    print(f"To users: {config('EMAIL_TO').split(',')}")
+    # Учетные данные для отправки письма
+    login = 'olonovaleksandar'
+    password = 'wpaqnubuejmchlrk'
+    email_to = ['adrolv@rambler.ru']  # Список получателей
 
+    # Создание содержимого письма
     msg = MIMEText(
-        f"Поздравляю, ваша статья {blog.name} "
-        f"набрала {blog.views_count} просмотров",
+        f"Поздравляю, ваша статья {blog.title} набрала {blog.views_count} просмотров",
         "plain", "utf-8"
     )
     msg["Subject"] = Header("Поздравляю !!!", "utf-8")
-    msg["From"] = login + "@yandex.ru"
-    msg["To"] = ",".join(config("EMAIL_TO").split(","))
+    msg["From"] = f"{login}@yandex.ru"
+    msg["To"] = ", ".join(email_to)
 
-    print(msg['To'])
-
-    s = smtplib.SMTP("smtp.yandex.ru", 587, timeout=10)
-
-    s.starttls()
-    s.login(login, password)
-    s.sendmail(msg["From"], msg["To"], msg.as_string())
-
-    s.quit()
+    # Установление соединения с SMTP сервером
+    s = None  # Инициализируем s как None
+    try:
+        s = smtplib.SMTP("smtp.yandex.ru", 587, timeout=10)
+        s.starttls()  # Начинаем TLS для безопасности
+        s.login(login, password)  # Входим на сервер
+        s.sendmail(msg["From"], email_to, msg.as_string())  # Отправляем письмо
+    except Exception as e:
+        print(f"Ошибка при отправке email: {e}")
+    finally:
+        if s:  # Проверяем, что s был создан
+            s.quit()  # Завершаем соединение с сервером.
