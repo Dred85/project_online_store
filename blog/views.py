@@ -33,7 +33,6 @@ class BlogUpdateView(UpdateView):
         "title",
         "content",
         "preview_image",
-        # "created_at",
         "is_published",
         "views_count",
     )
