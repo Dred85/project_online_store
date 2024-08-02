@@ -7,7 +7,7 @@ class BlogPost(models.Model):
     content = models.TextField()
     preview_image = models.ImageField(upload_to='blog_previews/')
     created_at = models.DateTimeField(auto_now_add=True)
-    is_published = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=True)
     views_count = models.PositiveIntegerField(default=0)
 
     def save(self, *args, **kwargs):
