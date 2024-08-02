@@ -47,36 +47,16 @@
                 <b>Цена: </b>{{object.price}}
                 <br><br>
                 <small class="text-body-secondary">
-
                     Продажи: {{object.created_at}}
                     <br>
                     Последнее изменение: {{object.updated_at}}
-
-
                 </small>
-
-
-                </p>
                 <div class="btn-group">
-
-                    {% if per_page %}
-                    <a class="btn btn-primary" href="{% url 'catalog:catalog' per_page page%}" role="button">Вернуться к каталогу</a>
-                    {% else %}
-                    <a class="btn btn-primary" href="{% url 'catalog:home' %}" role="button"> Вернуться на главную
-                        страницу </a>
-                    {% endif %}
-
-
+                    <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button"> Вернуться к
+                        каталогу</a>
                 </div>
-
-
             </div>
         </div>
-
-
     </div>
-
-
 </div>
-
 {% endblock %}
