@@ -29,7 +29,14 @@ class BlogCreateView(CreateView):
 
 class BlogUpdateView(UpdateView):
     model = BlogPost
-    fields = ('title', 'content')
+    fields = (
+        "title",
+        "content",
+        "preview_image",
+        # "created_at",
+        "is_published",
+        "views_count",
+    )
 
     # success_url = reverse_lazy('blog:list')
 
@@ -46,6 +53,8 @@ class BlogUpdateView(UpdateView):
 
 class BlogListView(ListView):
     model = BlogPost
+    template_name = 'blog/list.html'
+    paginate_by = 3
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
