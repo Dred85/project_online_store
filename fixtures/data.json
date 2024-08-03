@@ -1,0 +1,1519 @@
+[
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2024-07-01T19:47:22.366Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "1",
+      "object_repr": "Александр Леонидович Олонов",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2024-07-02T15:14:07.883Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "2",
+      "object_repr": "Иванов Иван",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2024-07-02T15:14:23.899Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "1",
+      "object_repr": "Олонов Александр Леонидович",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2024-07-02T16:03:43.643Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "4",
+      "object_repr": "Full HD телевизор 32'' LG 32LQ63006LA",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2024-07-02T16:06:57.623Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "5",
+      "object_repr": "Холодильник Gorenje NRK6202AW4",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2024-07-02T16:11:02.041Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "6",
+      "object_repr": "Игровой ноутбук Thunderobot 911S Core SD",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2024-07-02T16:49:14.222Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "5",
+      "object_repr": "Сидоров Дмитрий",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Email\", \"Phone\", \"Address\", \"Message\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2024-07-02T16:51:22.362Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "6",
+      "object_repr": "Евгений",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2024-07-02T16:51:26.628Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "3",
+      "object_repr": "Евгений",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2024-07-02T18:07:49.252Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "8",
+      "object_repr": "adrolv08111985@gmail.com",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2024-07-02T18:11:55.428Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "9",
+      "object_repr": "adrolv08111985@gmail.com",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2024-07-02T18:16:44.887Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "10",
+      "object_repr": "Александр Леонидович Олонов",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+      "action_time": "2024-07-02T18:37:07.498Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "12",
+      "object_repr": "Александр Леонидович Олонов",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+      "action_time": "2024-07-03T17:12:53.737Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "6.78\" Смартфон Infinix GT 20 Pro 256 ГБ голубой",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0438\\u043c\\u0435\\u043d\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0426\\u0435\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+      "action_time": "2024-07-03T17:14:53.924Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "2",
+      "object_repr": "65\" (165 см) OLED-телевизор Haier H65S9UG PRO черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0438\\u043c\\u0435\\u043d\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0426\\u0435\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+      "action_time": "2024-07-03T17:16:20.698Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "3",
+      "object_repr": "Смарт-часы HUAWEI WATCH FIT 3",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0438\\u043c\\u0435\\u043d\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"Category\", \"\\u0426\\u0435\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+      "action_time": "2024-07-06T16:49:37.505Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "Electronics",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+      "action_time": "2024-07-06T16:51:57.346Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "2",
+      "object_repr": "Красота и здоровье",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0438\\u043c\\u0435\\u043d\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+      "action_time": "2024-07-06T16:54:01.473Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "Электронные устройства и гаджеты",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0438\\u043c\\u0435\\u043d\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+      "action_time": "2024-07-06T16:55:14.066Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "3",
+      "object_repr": "Офис и мебель",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0438\\u043c\\u0435\\u043d\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+      "action_time": "2024-07-06T18:39:47.251Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "7",
+      "object_repr": "МФУ лазерное Pantum M6500W",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+      "action_time": "2024-07-06T18:41:23.675Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "8",
+      "object_repr": "Фен Aceline BA-100 красный/черный",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+      "action_time": "2024-07-07T12:51:09.636Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "11",
+      "object_repr": "Кот",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+      "action_time": "2024-07-07T12:51:18.034Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "10",
+      "object_repr": "Кот",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+      "action_time": "2024-07-07T13:00:29.401Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "13",
+      "object_repr": "Кот",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+      "action_time": "2024-07-07T13:00:34.408Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "12",
+      "object_repr": "Кот",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+      "action_time": "2024-07-07T13:02:48.273Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "14",
+      "object_repr": "Кот",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+      "action_time": "2024-07-07T13:15:07.915Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "15",
+      "object_repr": "Кот",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+      "action_time": "2024-07-07T13:16:09.402Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "9",
+      "object_repr": "Триммер DEXP NT-01WP серебристый/черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+      "action_time": "2024-07-07T13:18:48.656Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "16",
+      "object_repr": "Кот",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+      "action_time": "2024-07-08T17:11:01.579Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "18",
+      "object_repr": "Кот",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+      "action_time": "2024-07-08T18:15:12.904Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "10",
+      "object_repr": "тест3",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+      "action_time": "2024-07-08T18:15:16.328Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "9",
+      "object_repr": "тест2",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+      "action_time": "2024-07-08T18:15:22.192Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "6",
+      "object_repr": "тест1",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+      "action_time": "2024-07-09T15:34:24.082Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "13",
+      "object_repr": "тест4",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+      "action_time": "2024-07-09T15:34:28.838Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "12",
+      "object_repr": "test",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+      "action_time": "2024-07-09T15:34:32.310Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "11",
+      "object_repr": "тест2",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+      "action_time": "2024-07-09T15:34:36.707Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "1",
+      "object_repr": "тест",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+      "action_time": "2024-07-09T15:52:19.157Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "15",
+      "object_repr": "тест",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Slug\", \"Preview image\", \"Is published\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+      "action_time": "2024-07-12T12:47:07.634Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "27",
+      "object_repr": "3",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Is published\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+      "action_time": "2024-07-12T12:47:23.873Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "21",
+      "object_repr": "qwdea",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+      "action_time": "2024-07-12T12:47:35.340Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "20",
+      "object_repr": "test",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+      "action_time": "2024-07-29T17:41:05.736Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "МФУ лазерное Pantum M6500W - first (1)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+      "action_time": "2024-07-29T17:41:57.405Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "МФУ лазерное Pantum M6500W - 2 (2)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+      "action_time": "2024-07-29T17:42:12.427Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "МФУ лазерное Pantum M6500W - 2 (2)",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+      "action_time": "2024-07-29T18:04:02.684Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "МФУ лазерное Pantum M6500W - first (1)",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Is current\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+      "action_time": "2024-07-29T18:13:36.378Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Фен Aceline BA-100 красный/черный - 1 (1)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+      "action_time": "2024-07-30T15:55:33.622Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "МФУ лазерное Pantum M6500W - 2 (2)",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Is current\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+      "action_time": "2024-08-02T15:16:42.510Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "26",
+      "object_repr": "Топ смартфонов в 2024 году",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Preview image\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+      "action_time": "2024-08-02T15:18:37.780Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "26",
+      "object_repr": "Топ смартфонов в 2024 году",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+      "action_time": "2024-08-02T15:21:04.965Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "27",
+      "object_repr": "Топ-10 смарт-телевизоров 2023 года",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Slug\", \"Content\", \"Preview image\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+      "action_time": "2024-08-02T15:23:48.519Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "28",
+      "object_repr": "Как на смартфон снять портрет стоимостью 3000 евро. Показываем на Honor 200 Pro",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Slug\", \"Content\", \"Preview image\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+      "action_time": "2024-08-02T15:25:46.621Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "25",
+      "object_repr": "Xiaomi не собирается упрощать отключение рекламы в своих смартфонах",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Slug\", \"Content\", \"Preview image\"]}}]"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add Category",
+      "content_type": 7,
+      "codename": "add_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change Category",
+      "content_type": 7,
+      "codename": "change_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete Category",
+      "content_type": 7,
+      "codename": "delete_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view Category",
+      "content_type": 7,
+      "codename": "view_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add Product",
+      "content_type": 8,
+      "codename": "add_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change Product",
+      "content_type": 8,
+      "codename": "change_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete Product",
+      "content_type": 8,
+      "codename": "delete_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view Product",
+      "content_type": 8,
+      "codename": "view_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add Contact",
+      "content_type": 9,
+      "codename": "add_contact"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change Contact",
+      "content_type": 9,
+      "codename": "change_contact"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete Contact",
+      "content_type": 9,
+      "codename": "delete_contact"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view Contact",
+      "content_type": 9,
+      "codename": "view_contact"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add Статья",
+      "content_type": 10,
+      "codename": "add_blogpost"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change Статья",
+      "content_type": 10,
+      "codename": "change_blogpost"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete Статья",
+      "content_type": 10,
+      "codename": "delete_blogpost"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view Статья",
+      "content_type": 10,
+      "codename": "view_blogpost"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add version",
+      "content_type": 11,
+      "codename": "add_version"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change version",
+      "content_type": 11,
+      "codename": "change_version"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete version",
+      "content_type": 11,
+      "codename": "delete_version"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view version",
+      "content_type": 11,
+      "codename": "view_version"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$ZuB2Jb7k7B0lnZsDDBSK3v$IJgQ4H5osDKNTaSq9+AflZujSaQixuzsHzOcACf09Tk=",
+      "last_login": "2024-07-29T17:32:49.842Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-07-01T18:06:04.779Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "catalog",
+      "model": "category"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "catalog",
+      "model": "product"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "catalog",
+      "model": "contact"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "blog",
+      "model": "blogpost"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "catalog",
+      "model": "version"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "3efdw8vdu44ukfii71h9x58ey1p3lmnl",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGlk2UVibkp4zWN4fDiBHipMq4u4kUgpo38y81aS8zCUtTaY0sLkab06_G2Z6Sd0BP3N9jJbGOk8D2l2xB232PrK8b4f7d1ByK1sNRODYnyF2GTBgR6qeYw-KvUYWoCgXCR4BgbJo0E2Jwg6UI7pgPl8ORjl5:1sOLQ0:4tX6JkI-1ciXlWUHXSSTZgnNgEtNbKIy1Ac5fblqDSc",
+      "expire_date": "2024-07-15T18:06:24.016Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "oaphhvvygoh2a5byu18bqydcamtx0uwe",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGlk2UVibkp4zWN4fDiBHipMq4u4kUgpo38y81aS8zCUtTaY0sLkab06_G2Z6Sd0BP3N9jJbGOk8D2l2xB232PrK8b4f7d1ByK1sNRODYnyF2GTBgR6qeYw-KvUYWoCgXCR4BgbJo0E2Jwg6UI7pgPl8ORjl5:1sYUEr:2j-NAJuPRGnttIXe7XIUQo3Wbd88ro0F0gfhRT28M8U",
+      "expire_date": "2024-08-12T17:32:49.859Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "xkn7w3tji8xn2j94dxfxxv2p5kih7u4z",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGlk2UVibkp4zWN4fDiBHipMq4u4kUgpo38y81aS8zCUtTaY0sLkab06_G2Z6Sd0BP3N9jJbGOk8D2l2xB232PrK8b4f7d1ByK1sNRODYnyF2GTBgR6qeYw-KvUYWoCgXCR4BgbJo0E2Jwg6UI7pgPl8ORjl5:1sQ8ZZ:7nfGApxYLOH0XHlxrGUYTXVNod1a3tDmiE7bFtyBPrg",
+      "expire_date": "2024-07-20T16:47:41.319Z"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Электронные устройства и гаджеты",
+      "description": "Смартфоны и фототехника\r\nТВ, консоли и аудио\r\nБытовая техника\r\nПК, ноутбуки и периферия"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Красота и здоровье",
+      "description": "Укладка и сушка волос\r\nБритьё\r\nСтрижка и эпиляция\r\nУход за телом"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Офис и мебель",
+      "description": "Техника для печати\r\nТорговое оборудование и связь"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "6.78\" Смартфон Infinix GT 20 Pro 256 ГБ голубой",
+      "description": "Характеристики 6.78\" Смартфон Infinix GT 20 Pro 256 ГБ голубой\r\nЗаводские данные\r\nГарантия продавца / производителя\r\n12 мес.\r\nСтрана-производитель \r\nКитай\r\nОбщие параметры\r\nТип\r\nсмартфон\r\nМодель\r\n Infinix GT 20 Pro\r\nГод релиза\r\n 2024\r\nВнешний вид\r\nЦвет задней панели\r\n голубой\r\nЦвет граней\r\n серый\r\nЦвет, заявленный производителем\r\n кибер синий\r\nМобильная связь\r\nДиапазоны частот 2G\r\n GSM 850 (B5), GSM 900 (B8), GSM 1800 (B3), GSM 1900 (B2)\r\nДиапазоны частот 3G\r\n UMTS 850 (B5), UMTS 900 (B8), UMTS 1700 (B4), UMTS 1900 (B2), UMTS 2100 (B1)\r\nПоддержка сетей 4G (LTE) \r\n есть\r\nПоддержка 4G LTE-Advanced \r\n есть\r\nКатегории скорости LTE-Advanced\r\n LTE Cat. 13, LTE Cat. 18\r\nПоддержка VoLTE \r\n есть\r\nПоддержка сетей 5G \r\n есть\r\nФормат SIM-карт\r\n Nano-SIM\r\nКоличество физических SIM-карт\r\n 2\r\nКоличество eSIM\r\n 0\r\nРежим работы нескольких SIM-карт \r\n режим ожидания\r\nЭкран\r\nДиагональ экрана (дюйм) \r\n 6.78\"\r\nРазрешение экрана \r\n 2436x1080\r\nТехнология изготовления матрицы\r\n AMOLED\r\nТип матрицы (подробно) \r\nAMOLED\r\nЯркость\r\n 1300 Кд/м²\r\nЧастота обновления экрана \r\n 144 Гц\r\nПлотность пикселей \r\n 388 ppi\r\nКоличество цветов экрана \r\n 1.07 млрд\r\nЧастота дискретизации сенсора\r\n 360 Гц\r\nКонструктивные особенности экрана\r\nбезрамочный\r\nКонструкция и защита\r\nТип корпуса\r\n классический\r\nМатериал корпуса\r\nпластик, стекло\r\nЗащищенность\r\n защита от пыли и влаги\r\nСтепень защиты IP \r\nIP54\r\nТип выреза на экране\r\nкруглый/овальный\r\nОперационная система и процессор\r\nОперационная система\r\nAndroid\r\nВерсия ОС\r\n Android 14\r\nОболочка ОС\r\nXOS 14\r\nПоддержка Google Mobile Services \r\n есть\r\nМодель процессора\r\n MediaTek Dimensity 8200 Ultimate\r\nКоличество ядер \r\n 8\r\nМаксимальная частота процессора \r\n 3.1 ГГц\r\nКонфигурация процессора \r\n 1x Cortex-A78 3.1 ГГц, 3x Cortex-A78 3 ГГц, 4x Cortex-A55 2 ГГц\r\nТехпроцесс \r\n 4 нм\r\nГрафический ускоритель \r\n Mali-G610 MP6\r\nПамять\r\nТип оперативной памяти\r\nLPDDR5X\r\nОбъем оперативной памяти \r\n 12 ГБ\r\nВиртуальное расширение ОЗУ\r\n12 ГБ\r\nТип встроенной памяти\r\nUFS 3.1\r\nОбъем встроенной памяти \r\n 256 ГБ\r\nСлот для карты памяти\r\nесть (универсальный слот SIM + SIM / SIM + карта памяти)\r\nОсновная (тыловая) камера\r\nКоличество основных (тыловых) камер \r\n 3\r\nКоличество мегапикселей основной камеры \r\n108+2+2 Мп\r\nТип модулей камеры\r\nкамера с датчиком глубины резкости, макрокамера, основная камера\r\nАпертура основной камеры \r\n 1.75, 2.4\r\nАвтофокусировка основной камеры \r\n есть\r\nТип вспышки\r\nкольцевая светодиодная\r\nОптическая стабилизация \r\n есть\r\nЦифровой зум (фото) \r\n 10 x\r\nОптический зум (фото)\r\n 3 x\r\nРазрешение снимков основной камеры \r\n 2944x2944, 3248x1440, 3968x2976\r\nОсобенности и технологии тыловой оптики\r\n 6-элементная линза\r\nРежимы и функции фотосъемки\r\n документы, ночной режим\r\nВидеосъемка (основная камера)\r\nФормат видеосъемки\r\n Full HD, Ultra HD 2K, Ultra HD 4K\r\nРазрешение видео и частота кадров \r\n 1920x1080 (30 кадр./сек.), 1920x1080 (60 кадр./сек.), 2560x1440 (30 кадр./сек.), 3840x2160 (30 кадр./сек.), 3840x2160 (60 кадр./сек.)\r\nЗамедленная видеосъемка \r\n есть\r\nФорматы воспроизведения видео\r\n 3GP, M4V, MKV, MP4, TS, WEBM\r\nОсобенности и функции видеосъемки\r\n двойная съемка\r\nФронтальная камера\r\nДвойная фронтальная камера \r\n нет\r\nКоличество мегапикселей фронтальной камеры \r\n 32 Мп\r\nАпертура фронтальной камеры \r\n 2.2\r\nАвтофокусировка \r\n нет\r\nВстроенная вспышка \r\n есть\r\nРазрешение снимков фронтальной камеры \r\n 4896x4896, 6496x2880, 6528x4896\r\nРазрешение видеосъемки \r\n 1920x1080 (30 кадр./сек.), 2560x1440 (30 кадр./сек.)\r\nОсобенности и технологии фронтальной оптики\r\n 5-элементная линза\r\nАудио\r\nСтереодинамики \r\n есть\r\nФорматы аудиофайлов\r\n AAC, FLAC, MP3, OGG, WAV\r\nПоддержка кодеков Bluetooth\r\n AAC, LDAC, LHDC, SBC\r\nFM радио \r\n есть\r\nКоммуникации\r\nВерсия Bluetooth \r\n5.3\r\nСтандарт Wi-Fi \r\n4 (802.11n), 5 (802.11ac), 6 (802.11ax)\r\nNFC \r\n есть\r\nСистемы навигации\r\n A-GPS, BeiDou, GPS, Galileo, ГЛОНАСС\r\nИК-порт \r\n есть\r\nРазъемы и датчики\r\nИнтерфейс для зарядки \r\nUSB Type-C\r\nРазъем для наушников \r\n USB Type-C\r\nПоддержка OTG \r\n есть\r\nПитание\r\nТип аккумулятора\r\nLi-Pol\r\nЕмкость аккумулятора \r\n 5000 мА*ч\r\nНапряжение питания ЗУ\r\n 100-240 В/50-60 Гц\r\nВыходная мощность ЗУ\r\n 45 Вт\r\nБыстрая зарядка\r\n есть\r\nСтандарты быстрой зарядки \r\n Power Delivery 3.0\r\nПоддержка беспроводной зарядки\r\n нет\r\nПоддержка беспроводной реверсивной зарядки\r\n нет\r\nВремя работы в режиме разговора \r\n 32 ч\r\nВремя работы при прослушивании музыки\r\n 98 ч\r\nВремя работы при воспроизведении видео\r\n 10 ч\r\nВремя работы в режиме ожидания \r\n 781 ч\r\nДополнительная информация\r\nБиометрическая защита \r\n сканер отпечатков пальцев (в экране)\r\nНаушники в комплекте\r\n нет\r\nЗарядное устройство в комплекте\r\n есть\r\nОсобенности, дополнительно\r\n DCI P3, выделенный чип отображения, два микрофона, звук Hi-Res Audio, киберспортивный режим, подсветка корпуса\r\nГабариты и вес\r\nШирина\r\n 75.4 мм\r\nВысота\r\n 164.3 мм\r\nТолщина\r\n 8.2 мм\r\nВес смартфона\r\n 194 г\r\nГабариты и вес упаковки\r\nШирина упаковки\r\n95 мм\r\nВысота упаковки\r\n195 мм\r\nГлубина упаковки\r\n62 мм\r\nВес в упаковке\r\n600 г",
+      "image": "product_images/смартфон.jpg.webp",
+      "category": 1,
+      "price": "37999.00",
+      "created_at": "2024-07-01T19:19:47.117Z",
+      "updated_at": "2024-07-13T16:34:16.688Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "65\" (165 см) OLED-телевизор Haier H65S9UG PRO черный!!!",
+      "description": "арактеристики 65\" (165 см) OLED-телевизор Haier H65S9UG PRO черный\r\nЗаводские данные\r\nГарантия продавца / производителя\r\n12 мес.\r\nСтрана-производитель \r\nКитай\r\nОбщие параметры и питание\r\nТип\r\nOLED-телевизор\r\nМодель\r\nHaier H65S9UG PRO\r\nКод производителя\r\n[DH1VWGD01RU]\r\nПитание\r\n 100-240 В ～ 50/60 Гц\r\nЦвет рамки\r\n черный\r\nЦвет подставки\r\nчерный\r\nДата начала производства\r\n 2021\r\nЭкран\r\nТип подсветки экрана \r\nOLED\r\nТехнология затемнения\r\n нет\r\nДиагональ экрана (дюйм) \r\n 65\"\r\nДиагональ экрана \r\n 165 см\r\nРазрешение экрана \r\n 4K UltraHD, 3840x2160\r\nСтандарты HDTV\r\nUltra HD (4K) 2160p\r\nПоддержка HDR \r\n есть\r\nТехнология HDR \r\nDolby Vision, HDR10\r\nПараметры матрицы\r\nЧастота обновления экрана \r\n 120 Гц\r\nТип матрицы\r\nOLED\r\nЯркость \r\n 1000 Кд/м²\r\nКонтрастность \r\n 15000\r\nУгол обзора \r\n178° / 178°\r\nSmart TV\r\nОперационная система \r\nAndroid TV\r\nПоддержка Smart TV \r\n есть\r\nРаспознавание голоса \r\n есть\r\nWi-Fi \r\n встроенный\r\nСтандарт Wi-Fi \r\n 5 (802.11ac)\r\nПрием сигнала\r\nЦифровые тюнеры \r\nDVB-C, DVB-S2, DVB-T, DVB-T2\r\nТелетекст \r\nнет\r\nЗвук\r\nМощность звука \r\n 20 Вт\r\nТехнология звука \r\nDolby Atmos\r\nСабвуфер \r\n нет\r\nОбъемное звучание \r\nесть\r\nМультимедиа\r\nОсновные видеофайлы и кодеки\r\nH.264 AVC, H.265 HEVC, VP9\r\nРазъемы и коммутация\r\nКоличество HDMI портов \r\n 3\r\nВерсия HDMI \r\n HDMI 2.1\r\nДругие аудио- / видеовходы \r\nантенный вход, композитный mini AV\r\nВыход на наушники\r\n есть\r\nДругие аудио- / видеовыходы \r\nаудио S/PDIF (оптический)\r\nКоличество USB \r\n 2 шт\r\nСлот для CI / PCMCIA \r\n есть\r\nУстройство для чтения карт памяти\r\n SD\r\nBluetooth \r\n есть\r\nПорт Ethernet \r\n есть\r\nDVB CAM \r\n нет\r\nФункции\r\nИгровой телевизор \r\n да\r\nКартинка в картинке \r\n нет\r\nФункции и технологии HDMI\r\n DLNA, HDMI ARC, HDMI CEC\r\nФункция TimeShift \r\n есть\r\nЗапись видео \r\n есть\r\nБеспроводная передача мультимедиа\r\n Chromecast\r\nУправление со смартфона \r\n нет\r\nКрепление\r\nВозможность настенного крепления\r\n есть\r\nРазмер VESA \r\n 300 x 200\r\nРасположение подставки\r\n по центру\r\nДополнительная информация\r\nМаксимальная потребляемая мощность\r\n420 Вт\r\nКомплектация\r\nбатарейки, документация, кабель питания, пульт ДУ\r\nОсобенности, дополнительно\r\n 4K Upscaling\r\nГабариты и вес\r\nШирина без подставки\r\n 1447 мм\r\nВысота без подставки\r\n 834 мм\r\nТолщина без подставки\r\n 69 мм\r\nВес без подставки\r\n 23.2 кг\r\nШирина с подставкой\r\n 1447 мм\r\nВысота с подставкой\r\n 859 мм\r\nТолщина с подставкой\r\n 237 мм\r\nВес с подставкой\r\n 24.8 кг\r\nШирина подставки\r\n610 мм\r\nГабариты и вес в упаковке\r\nШирина коробки\r\n1600 мм\r\nВысота коробки\r\n955 мм\r\nГлубина коробки\r\n185 мм\r\nВес в упаковке\r\n31.7 кг\r\nГабариты и вес, измерено в лаборатории DNS\r\nШирина без подставки, измерено в ДНС\r\n1450 мм\r\nВысота без подставки, измерено в ДНС\r\n825 мм\r\nТолщина без подставки, измерено в ДНС\r\n80 мм\r\nВес без подставки, измерено в ДНС\r\n23.2 кг\r\nШирина с подставкой, измерено в ДНС\r\n1450 мм\r\nВысота с подставкой, измерено в ДНС\r\n852 мм\r\nТолщина с подставкой, измерено в ДНС\r\n235 мм\r\nВес с подставкой, измерено в ДНС\r\n24.8 кг\r\nШирина подставки, измерено в ДНС\r\n600 мм",
+      "image": "product_images/TV_Haier.jpg.webp",
+      "category": 1,
+      "price": "154999.00",
+      "created_at": "2024-07-29T16:00:39.677Z",
+      "updated_at": "2024-07-29T16:00:39.677Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Смарт-часы HUAWEI WATCH FIT 3",
+      "description": "корпус - черный, ремешок - черный, 1.82\", AMOLED, 480x408, Bluetooth, для Android 8.0 и выше, iOS 13",
+      "image": "product_images/watch.jpg.webp",
+      "category": 1,
+      "price": "10999.00",
+      "created_at": "2024-07-29T16:01:06.505Z",
+      "updated_at": "2024-07-29T16:01:06.505Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Full HD телевизор 32'' LG 32LQ63006LA",
+      "description": "Разрешение Full HD\r\nИнтеллектуальный процессор α5 Gen5\r\nSmart TV WebOS и ThinQ AI для персонализации контента",
+      "image": "product_images/TV.jpg",
+      "category": 1,
+      "price": "80000.00",
+      "created_at": "2024-07-02T16:03:43.586Z",
+      "updated_at": "2024-07-13T15:59:56.549Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Холодильник Gorenje NRK6202AW4",
+      "description": "Характеристики\r\nТип\r\nДвухкамерный\r\nОбщий объем\r\n331 л\r\nОбщий объем холодильной камеры\r\n235 л\r\nСистема размораживания холодильной камеры\r\nNo Frost\r\nЗона свежести\r\nЕсть\r\nМорозильная камера\r\nСнизу\r\nОбщий объем морозильной камеры\r\n96 л\r\nСистема размораживания морозильной камеры\r\nNo Frost\r\nКоличество компрессоров\r\n1\r\nКласс энергопотребления\r\nA++\r\nВысота\r\n200 см\r\nШирина",
+      "image": "product_images/freeze.jpeg",
+      "category": 1,
+      "price": "59999.00",
+      "created_at": "2024-07-02T16:06:57.622Z",
+      "updated_at": "2024-07-13T16:00:18.006Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Игровой ноутбук Thunderobot 911S Core SD",
+      "description": "Характеристики\r\nИгровой ноутбук\r\nЕсть\r\nОперационная система\r\nБез ОС\r\nДиагональ экрана\r\n15.6\"\r\nРазрешение экрана\r\n1920x1080 Пикс\r\nПроизводитель процессора\r\nIntel\r\nМодель процессора\r\nCore i5-12450H\r\nТактовая частота\r\n2 ГГц\r\nОбъем оперативной памяти\r\n8 ГБ\r\nТип оперативной памяти\r\nDDR4\r\nТип накопителя\r\nSSD\r\nОбъем накопителя\r\n512 ГБ\r\nПроизводитель видеокарты\r\nNVIDIA\r\nМодель видеокарты\r\nGeForce RTX 3050",
+      "image": "product_images/nout.jpeg",
+      "category": 1,
+      "price": "79999.00",
+      "created_at": "2024-07-02T16:11:02.040Z",
+      "updated_at": "2024-07-13T16:00:45.994Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "МФУ лазерное Pantum M6500W",
+      "description": "Характеристики МФУ лазерное Pantum M6500W\r\nЗаводские данные\r\nГарантия продавца / производителя\r\n24 мес.\r\nСтрана-производитель \r\nКитай\r\nОбщие характеристики\r\nТип \r\nМФУ лазерное\r\nМодель\r\nPantum M6500W\r\nКод производителя\r\n[M6500W]\r\nОсновной цвет\r\n черный\r\nФункции устройства \r\nкопир, принтер, сканер\r\nОбласть применения \r\n для офиса\r\nРазмещение\r\n настольный\r\nАппаратная часть\r\nОперативная память \r\n 128 МБ\r\nЧастота процессора \r\n600 МГц\r\nПринтер\r\nТехнология печати \r\nлазерная\r\nЦветность печати \r\nчерно-белая\r\nМаксимальный формат \r\n A4\r\nМаксимальное разрешение черно-белой печати \r\n 1200x1200 dpi\r\nСкорость черно-белой печати (стр / мин) \r\n22 стр/мин (А4)\r\nВремя выхода первого черно-белого отпечатка \r\n 7.8 сек\r\nМаксимальное разрешение цветной печати \r\n нет\r\nСкорость цветной печати (стр / мин) \r\nнет\r\nРекомендуемый месячный объем печати\r\n2000 стр\r\nМаксимальный месячный объем печати \r\n 20000\r\nАвтоматическая двусторонняя печать \r\n нет\r\nПечать фотографий\r\nнет\r\nПечать без полей\r\nнет\r\nСканер\r\nТип сканера \r\n планшетный\r\nОптическое разрешение сканера \r\n 1200x1200 dpi\r\nСкорость сканирования \r\n22 стр/мин\r\nМаксимальный формат бумаги (сканер) \r\n A4 (216x297)\r\nУстройство автоподачи \r\n нет\r\nТип устройства автоподачи \r\n нет\r\nФункции сканирования \r\nотправка на сервер FTP, сканирование в электронную почту, сканирование на компьютер\r\nКопир\r\nМаксимальное разрешение копира \r\n 600x600 dpi\r\nСкорость копирования \r\n22 стр/мин\r\nИзменение масштаба \r\n25-400 %\r\nШаг масштабирования \r\n1 %\r\nМаксимальное количество копий за цикл \r\n 99\r\nФакс\r\nФункция факса \r\n нет\r\nЦветной факс \r\nнет\r\nПамять факса \r\nнет\r\nМаксимальное разрешение факса \r\nнет\r\nМаксимальная скорость передачи \r\n0 Кбит\r\nЛотки\r\nЕмкость подачи \r\n150 листов\r\nЕмкость выходного лотка \r\n 100 листов\r\nЕмкость лотка ручной подачи \r\n1 лист\r\nПоддерживаемая плотность носителей \r\n 60 - 163 г/м2\r\nПечатает на (материалы) \r\n карточках, конвертах, пленках, тонкой бумаге, этикетках\r\nРасходные материалы\r\nКоличество картриджей \r\n 1 шт\r\nМодель картриджей \r\n Pantum P-230R (1600 стр.), Pantum PC-211EV (1600 стр.)\r\nМодель фотобарабана\r\nнет\r\nРесурс черного картриджа\r\n1600 страниц\r\nРесурс цветного картриджа\r\n0\r\nИнтерфейсы\r\nИнтерфейсы \r\nUSB, Wi-Fi\r\nУстройство для чтения карт памяти\r\n нет\r\nПоддержка карт памяти \r\n нет\r\nПоддержка\r\nСовместимость \r\n Linux, Windows, macOS\r\nШрифты и языки управления \r\nGDI\r\nМобильные технологии печати \r\n Apple AirPrint (iOS), Mopria (Android)\r\nПрямая печать \r\n нет\r\nЯзык меню дисплея\r\nрусский\r\nЭнергопотребление и мощность\r\nТип и напряжение питания\r\n220-240В/50-60Гц/3А\r\nДополнительная информация\r\nОтображение информации \r\n жк-дисплей\r\nУровень шума при работе \r\n54 дБ\r\nУровень шума в режиме ожидания \r\n30 дБ\r\nКомплектация\r\nдиск с ПО, документация, кабель USB, кабель питания, стартовый картридж\r\nГабариты, вес\r\nШирина\r\n417 мм\r\nВысота\r\n244 мм\r\nГлубина\r\n305 мм\r\nВес МФУ\r\n7.5 кг\r\nГабариты, вес в упаковке\r\nШирина упаковки\r\n385 мм\r\nВысота упаковки\r\n330 мм\r\nГлубина упаковки\r\n505 мм\r\nВес в упаковке\r\n8.9 кг",
+      "image": "product_images/mfu.jpg.webp",
+      "category": 3,
+      "price": "12999.00",
+      "created_at": "2024-07-06T18:39:47.207Z",
+      "updated_at": "2024-07-06T18:39:47.207Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "Фен Aceline BA-100 красный/черный",
+      "description": "Компактный фен Aceline BA-100 предусматривает складную ручку в конструкции, благодаря которой он уместится в ваш багаж. Устройство оснащено мотором мощностью 1200 Вт, за счет которого оно быстро справится с сушкой волос. Подобрать нужный режим работы позволят две скорости воздушного потока и две температуры нагрева. Чтобы фен Aceline BA-100 прослужил как можно дольше, его двигатель предусматривает систему защиты от перегрева. В комплектацию модели входит насадка-концентратор для сушки волос и точечной укладки отдельных прядей.",
+      "image": "product_images/fen.jpg.webp",
+      "category": 2,
+      "price": "599.00",
+      "created_at": "2024-07-06T18:41:23.674Z",
+      "updated_at": "2024-07-06T18:41:23.674Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 17,
+    "fields": {
+      "name": "Беззеркальный фотоаппарат Canon EOS M200 Kit 15-45mm IS STM черный",
+      "description": "с объективом, кроп, 24.1 Мп, фото: 6000x4000 пикс, до 6.1 кадр./сек, видео 4K, дисплей наклонный, сенсорный, Bluetooth, Wi-Fi",
+      "image": "product_images/photo.jpg.webp",
+      "category": 1,
+      "price": "74999.00",
+      "created_at": "2024-07-07T13:21:04.583Z",
+      "updated_at": "2024-07-07T13:21:04.583Z"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 1,
+    "fields": {
+      "name": "Олонов Александр Леонидович",
+      "email": "adrolv08111985@gmail.com",
+      "phone": "89101268349",
+      "address": "Нижний Новгород",
+      "message": "Hi, Sky!"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 2,
+    "fields": {
+      "name": "Иванов Иван",
+      "email": "ivan@mail.com",
+      "phone": "+7(950)629-23-78",
+      "address": "ул. Веселого, д.8",
+      "message": "Какой срок доставки?"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 4,
+    "fields": {
+      "name": "Евгений",
+      "email": "",
+      "phone": "+79101268340",
+      "address": "",
+      "message": "Мне нужно срочно"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 5,
+    "fields": {
+      "name": "Сидоров Дмитрий",
+      "email": "adrolv08111985@gmail.com",
+      "phone": "+7 906 350-08-90",
+      "address": "Подгорная, 8",
+      "message": "Как с вами связаться?"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 7,
+    "fields": {
+      "name": "Костин Максим Евгеньевич",
+      "email": "",
+      "phone": "+7(915)668-34-40",
+      "address": "",
+      "message": "Мне нужен телефон"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 11,
+    "fields": {
+      "name": "Клим Чугункин",
+      "email": "klim@mail.ru",
+      "phone": "*********",
+      "address": "НН",
+      "message": "НН"
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 1,
+    "fields": {
+      "product": 7,
+      "version_number": "1",
+      "version_name": "first",
+      "is_current": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 2,
+    "fields": {
+      "product": 7,
+      "version_number": "2",
+      "version_name": "2",
+      "is_current": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 3,
+    "fields": {
+      "product": 8,
+      "version_number": "1",
+      "version_name": "1",
+      "is_current": true
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 19,
+    "fields": {
+      "title": "тест!!!!",
+      "slug": "",
+      "content": "тест",
+      "preview_image": "",
+      "created_at": "2024-07-09T16:58:04.051Z",
+      "is_published": false,
+      "views_count": 0
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 25,
+    "fields": {
+      "title": "Xiaomi не собирается упрощать отключение рекламы в своих смартфонах",
+      "slug": "Xiaomi не собирается упрощать отключение рекламы в своих смартфонах",
+      "content": "Ранее появилась информация, что Xiaomi собирается добавить в настройки своих смартфонов переключатель под названием «Реклама в системных приложениях». Он позволил бы пользователям в одно нажатие отключать всю системную рекламу в HyperOS.\r\n\r\nВидимо, в ближайшем будущем это нововведение добавлять не собираются, зато обещают сократить количество предустановленных приложений. Об этом Xiaomi сообщила изданию Android Authority. \r\n\r\n«Мы переоптимизируем нашу бизнес-стратегию в этом отношении, чтобы улучшить пользовательский опыт за счёт сокращения предустановленных приложений. Пользователи должны увидеть эти результаты довольно скоро в наших будущих флагманах. Однако наша философия заключается в том, чтобы вносить изменения, которые легко доступны и полезны для всех наших пользователей, поэтому в настоящее время мы не планируем добавлять тумблер, который, по правде говоря, обнаружит и будет использовать лишь небольшое количество пользователей», — Xiaomi. \r\nПользователи нынешних смартфонов Xiaomi могут отключить рекламу, но для этого придётся проделать несколько действий. Отдельная кнопка в настройках смартфона сильно бы упростила этот процесс.",
+      "preview_image": "blog_previews/сяоми_dh2MQlr.webp",
+      "created_at": "2024-07-12T12:44:04.239Z",
+      "is_published": true,
+      "views_count": 4
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 26,
+    "fields": {
+      "title": "Топ смартфонов в 2024 году",
+      "slug": "top-smartfonov-v-2024-godu",
+      "content": "Какой смартфон выбрать в 2024 — Топ 10\r\nSamsung Galaxy S23.\r\nHuawei Nova 11 Pro.\r\nInfinix ZERO 30.\r\nHuawei P60 Pro.\r\nPoco X6 Pro.\r\nXiaomi 13 Pro.\r\nHonor 90.\r\nTECNO POVA 5 Pro.",
+      "preview_image": "blog_previews/топ_смартфонов_6j0iDXB.jpeg",
+      "created_at": "2024-07-12T12:44:16.003Z",
+      "is_published": true,
+      "views_count": 56
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 27,
+    "fields": {
+      "title": "Топ-10 смарт-телевизоров 2023 года",
+      "slug": "Топ-10 смарт-телевизоров 2023 года",
+      "content": "И снова миновали 12 месяцев, и снова за год на рынок выпустили массу новых телевизоров. От дорогущих 8K-панелей до бюджетных решений от китайских брендов. И даже «Яндекс» смог удивить, совместив «Станцию» с ТВ. \r\n\r\nС топами лучших телевизоров всегда сложно. Можно выбрать 20 схожих по цене и параметрам моделей и они все будут хорошими, а отличия лишь в значке на корпусе, дизайне, да ещё каких-то мелочах. Как же тогда я выбирал десять лучших» Читал и смотрел обзоры зарубежных изданий, сравнивал, ну и немного опирался на свои предпочтения.\r\n\r\nНекоторые из моделей добавлены сюда, потому что понравились лично мне. Поэтому назвать этот топ на 100% объективным не могу. У другого человека с вероятностью в 99% получился бы другой список. \r\n\r\nВ одном можете быть уверены — каждый из этих телевизоров хорош и достоин попадания в список лучших.",
+      "preview_image": "blog_previews/SD4ThfKXsV3Z_YKPArtX.webp",
+      "created_at": "2024-07-12T12:44:34.537Z",
+      "is_published": true,
+      "views_count": 113
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 28,
+    "fields": {
+      "title": "Как на смартфон снять портрет стоимостью 3000 евро. Показываем на Honor 200 Pro",
+      "slug": "Как на смартфон снять портрет стоимостью 3000 евро. Показываем на Honor 200 Pro",
+      "content": "И нет, это не кликбейт. \r\n\r\n3000 евро — реальная стоимость одного портрета в знаменитой французской студии Harcourt. Только платить такие деньги с Honor 200 Pro не придётся — смартфон делает снимки не хуже именитого фотоателье.\r\n\r\nМне удалось плотно протестировать портретный режим Honor 200 Pro вместе с профессиональным российским фотографом Олегом Зотовым. Результаты впечатлили настолько, что я даже портреты снимать захотел, хотя почти никогда этого не делаю. \r\n\r\nФото на Honor 200 Pro в режиме Harcourt Classic\r\nФото на Honor 200 Pro в режиме Harcourt Classic\r\nИ сразу дисклеймер. Ни одна фотография в статье дополнительно не обрабатывалась. Всё снято в портретном режиме и с автоматическими настройками. И да, полный обзор Honor 200 Pro тоже будет, но чуть позже.",
+      "preview_image": "blog_previews/Фото_портрет_XUhPQiO.webp",
+      "created_at": "2024-07-12T12:44:51.588Z",
+      "is_published": true,
+      "views_count": 16
+    }
+  }
+]
