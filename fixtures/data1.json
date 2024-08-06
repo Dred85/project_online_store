@@ -1,43 +1,5 @@
 [
-  {
-    "model": "admin.logentry",
-    "pk": 1,
-    "fields": {
-      "action_time": "2024-07-01T19:47:22.366Z",
-      "user": 1,
-      "content_type": 9,
-      "object_id": "1",
-      "object_repr": "Александр Леонидович Олонов",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 2,
-    "fields": {
-      "action_time": "2024-07-02T15:14:07.883Z",
-      "user": 1,
-      "content_type": 9,
-      "object_id": "2",
-      "object_repr": "Иванов Иван",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 3,
-    "fields": {
-      "action_time": "2024-07-02T15:14:23.899Z",
-      "user": 1,
-      "content_type": 9,
-      "object_id": "1",
-      "object_repr": "Олонов Александр Леонидович",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
-    }
-  },
+
   {
     "model": "admin.logentry",
     "pk": 4,
@@ -116,19 +78,8 @@
       "change_message": ""
     }
   },
-  {
-    "model": "admin.logentry",
-    "pk": 10,
-    "fields": {
-      "action_time": "2024-07-02T18:07:49.252Z",
-      "user": 1,
-      "content_type": 9,
-      "object_id": "8",
-      "object_repr": "adrolv08111985@gmail.com",
-      "action_flag": 3,
-      "change_message": ""
-    }
-  },
+
+
   {
     "model": "admin.logentry",
     "pk": 11,
