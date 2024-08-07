@@ -10,11 +10,11 @@ from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
 
 from config.settings import EMAIL_HOST_USER
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
 
 import random
 import string
-# from django.contrib.auth.models import User
+
 from django.contrib.auth.hashers import make_password
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -65,6 +65,7 @@ def generate_random_password(length=8):
     characters = string.ascii_letters + string.digits + string.punctuation
     return ''.join(random.choice(characters) for i in range(length))
 
+
 class PasswordResetView(View):
     def get(self, request):
         return render(request, 'users/password_reset.html')
@@ -72,7 +73,7 @@ class PasswordResetView(View):
     def post(self, request):
         email = request.POST.get('email')
         try:
-            user = User.objects.get(email=email)  # Используйте вашу модель пользователя
+            user = User.objects.get(email=email)
             new_password = generate_random_password()
             user.password = make_password(new_password)
             user.save()
@@ -81,7 +82,7 @@ class PasswordResetView(View):
             send_mail(
                 'Ваш новый пароль',
                 f'Ваш новый пароль: {new_password}',
-                settings.DEFAULT_FROM_EMAIL,  # Замените на ваш адрес отправителя
+                settings.DEFAULT_FROM_EMAIL,
                 [email],
                 fail_silently=False,
             )
