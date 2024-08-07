@@ -69,7 +69,7 @@ class BlogDetailView(DetailView):
         self.object.views_count += 1
         self.object.save()
 
-        if self.object.views_count >= 10:
+        if self.object.views_count >= 300:
             send_email(self.object)
 
         return self.object

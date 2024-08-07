@@ -50,13 +50,9 @@
 {% endblock %}
 
 <nav class="pagination">
-    {% for p in paginator.page_range %}
-    {% if page_obj.number == p %}
-    <a class="active">{{ p }}</a>
-    {% else %}
-    <a href="?page={{ p }}">{{ p }}</a>
-    {% endif %}
-    {% endfor %}
+        {% for p in paginator.page_range %}
+            <a href="?page={{ p }}">{{ p }}</a>
+        {% endfor %}
 </nav>
 
 <footer class="pt-4 my-md-5 pt-md-5 border-top">

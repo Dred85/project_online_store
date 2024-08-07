@@ -3,7 +3,7 @@ import os
 from catalog.models import Product, Contact, Category, Version
 
 from django.urls import reverse_lazy
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 
 from catalog.forms import ContactForm, ProductForm, ProductVersionForm
@@ -20,7 +20,6 @@ class HomeView(ListView):
     model = Product
     template_name = 'main/home.html'
     context_object_name = 'latest_products'
-    paginate_by = 10
     queryset = Product.objects.order_by('-created_at')[:5]
 
     def get_context_data(self, **kwargs):
@@ -41,29 +40,31 @@ class ProductListView(ListView):
     def get_context_data(self, **kwargs):
         # Получаем контекст из родительского класса
         context = super().get_context_data(**kwargs)
-
         # Получаем все продукты
         products = context['products']
-
         # Создаем словарь для хранения текущих версий
         current_versions = {}
-
         # Ищем текущую версию для каждого продукта
         for product in products:
             current_version = Version.objects.filter(product=product, is_current=True).first()
             current_versions[product.id] = current_version
-
         # Добавляем текущие версии в контекст
         context['current_versions'] = current_versions
-
         return context
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(CreateView, LoginRequiredMixin):
     model = Product
     form_class = ProductForm
     template_name = 'main/product_form.html'
     success_url = reverse_lazy('catalog:product_list')
+
+    def form_valid(self, form):
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -151,6 +152,7 @@ class ProductDetailView(DetailView):
 
 
 def handle_uploaded_file(f, difference_between_files):
+    """Функция обработки загруженных файлов"""
     if os.path.exists(os.path.join("product_images", f.name)):
         filename = difference_between_files + f.name
         print(f"file exists! f.name = {f.name}, new={filename}")
