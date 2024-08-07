@@ -3,6 +3,7 @@ from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
 
+
 class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, verbose_name='почта')
@@ -21,5 +22,4 @@ class User(AbstractUser):
         verbose_name_plural = 'пользователи'
 
     def __str__(self):
-        return  self.email
-
+        return self.email
