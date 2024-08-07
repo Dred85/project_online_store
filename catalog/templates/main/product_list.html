@@ -5,7 +5,9 @@
 
 {% block content %}
 <div class="container mb-2 mt-2">
+    {% if user.is_authenticated %}
     <a class="btn btn-primary" href="{% url 'catalog:create_product' %}" role="button">Добавить продукт</a>
+    {% endif %}
 
 </div>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
