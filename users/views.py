@@ -74,7 +74,8 @@ class PasswordResetView(View):
         email = request.POST.get('email')
         try:
             user = User.objects.get(email=email)
-            new_password = generate_random_password()
+            new_password = User.objects.make_random_password()
+            # new_password = generate_random_password()
             user.password = make_password(new_password)
             user.save()
 
@@ -84,10 +85,10 @@ class PasswordResetView(View):
                 f'Ваш новый пароль: {new_password}',
                 settings.DEFAULT_FROM_EMAIL,
                 [email],
-                fail_silently=False,
+                fail_silently=True,
+                # fail_silently=False,
             )
             return redirect(reverse("users:login"))
-        except User.DoesNotExist:
-            return JsonResponse({'error': 'Пользователь с таким адресом электронной почты не найден.'}, status=404)
         except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
+            return render(request, 'users/do_not_know_email.html')
+

@@ -13,5 +13,4 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path("email-confirm/<str:token>/", email_verification, name='email-confirm'),
     path('password-reset/', PasswordResetView.as_view(), name='password_reset'),
-
 ]
