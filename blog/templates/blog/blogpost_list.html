@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+{% block  content %}
+<div class="container mb-2 mt-2">
+    {% if user.is_authenticated %}
+    <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">Добавить статью</a>
+    {% endif %}
+
+
+
+</div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for object in object_list %}
+    <div class="col">
+        <div class="card shadow-sm">
+            <img src="{{ object.avatar }}">
+            <div class="card-body">
+                <p class="card-text">
+                    {{ object | title }}
+                </p>
+                <div class="d-grid gap-2 d-md-block">
+                    <div class="btn-group">
+                        <a class="btn btn-success" href="{% url 'blog:view' object.pk %}" role="button">Посмотреть</a>
+
+
+                        <a class="btn btn-warning" href="{% url 'blog:edit' object.pk %}"
+                           role="button">Изменить</a>
+
+                        <a class="btn btn-danger" href="{% url 'blog:delete' object.pk %}"
+                           role="button">Удалить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+{% endblock %}

@@ -1,79 +1,158 @@
 import os
-from datetime import datetime
 
-from django.shortcuts import render, redirect, get_object_or_404
+from catalog.models import Product, Contact, Category, Version
 
-from catalog.forms import ContactForm
-from catalog.models import Product, Contact, Category
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.forms import inlineformset_factory
 
-
-def home(request):
-    # Получение категорий
-    list_category = Category.objects.order_by('name')
-    list_products = Product.objects.all()
-    latest_products = Product.objects.order_by('-created_at')[:5]
-
-    # Вывод последних пяти товаров в консоль
-    for product in latest_products:
-        print(product)
-
-    return render(request, 'main/home.html', {
-        'latest_products': latest_products,
-        'list_category': list_category,
-        'list_products': list_products,
-        'nums': [2, 3]
-    })
+from catalog.forms import ContactForm, ProductForm, ProductVersionForm
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 
 
-def contacts(request):
-    contact_info = Contact.objects.all()
+class HomeView(ListView):
+    model = Product
+    template_name = 'main/home.html'
+    context_object_name = 'latest_products'
+    queryset = Product.objects.order_by('-created_at')[:5]
 
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('contacts')
-    else:
-        form = ContactForm()  # Инициализация формы для GET-запроса
-
-    return render(request, 'main/contacts.html', {
-        'contact_info': contact_info,
-        'form': form  # Передаем форму в контекст
-    })
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_category'] = Category.objects.order_by('name')
+        context['list_products'] = Product.objects.all()
+        context['nums'] = [2, 3]
+        return context
 
 
-def catalog(request, page, per_page):
-    len_product = Product.objects.count()  # Используем count() для оптимизации
-    if len_product % per_page != 0:
-        page_count = [x + 1 for x in range((len_product // per_page) + 1)]
-    else:
-        page_count = [x + 1 for x in range((len_product // per_page))]
+class ProductListView(ListView):
+    model = Product
+    template_name = 'main/product_list.html'
+    paginate_by = 3
 
-    product_list = Product.objects.all()[per_page * (page - 1): per_page * page]
+    context_object_name = 'products'
 
-    context = {
-        "product_list": product_list,
-        "page": page,
-        "per_page": per_page,
-        "page_count": page_count
-    }
+    def get_context_data(self, **kwargs):
+        # Получаем контекст из родительского класса
+        context = super().get_context_data(**kwargs)
+        # Получаем все продукты
+        products = context['products']
+        # Создаем словарь для хранения текущих версий
+        current_versions = {}
+        # Ищем текущую версию для каждого продукта
+        for product in products:
+            current_version = Version.objects.filter(product=product, is_current=True).first()
+            current_versions[product.id] = current_version
+        # Добавляем текущие версии в контекст
+        context['current_versions'] = current_versions
+        return context
 
-    return render(request, 'main/per_page.html', context)
+
+class ProductCreateView(CreateView, LoginRequiredMixin):
+    model = Product
+    form_class = ProductForm
+    template_name = 'main/product_form.html'
+    success_url = reverse_lazy('catalog:product_list')
+
+    def form_valid(self, form):
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        number = Product.objects.count()
+        if number > 5:
+            products_list = Product.objects.all()[number - 5:number]
+        else:
+            products_list = Product.objects.all()
+        context['object_list'] = products_list
+        context['category_list'] = Category.objects.all()
+        context['title'] = 'Добавить продукт'
+        return context
 
 
-def product_detail(request, pk, page=None, per_page=None):
-    _object = get_object_or_404(Product, pk=pk)
-    context = {
-        "object": _object,
-        "pagination": bool(per_page),
-        "per_page": per_page,
-        "page": page
-    }
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'main/product_form.html'
+    success_url = reverse_lazy('catalog:product_list')
 
-    return render(request, 'main/product_detail.html', context)
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        ProductFormset = inlineformset_factory(Product, Version, form=ProductVersionForm, extra=1)
+        if self.request.method == 'POST':
+            context_data["formset"] = ProductFormset(self.request.POST, instance=self.object)
+        else:
+            context_data["formset"] = ProductFormset(instance=self.object)
+        return context_data
+
+    def form_valid(self, form):
+        context_data = self.get_context_data()
+        formset = context_data["formset"]
+        if form.is_valid() and formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return super().form_valid(form)
+
+        else:
+            return self.render_to_response(self.get_context_data(form=form, formset=formset))
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'main/product_confirm_delete.html'
+    success_url = reverse_lazy('catalog:product_list')
+
+
+class ContactView(CreateView):
+    model = Contact
+    template_name = 'main/contacts.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('contacts')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contact_info'] = Contact.objects.all()
+        return context
+
+
+class CatalogView(ListView):
+    paginate_by = 3
+    model = Product
+    template_name = 'main/per_page.html'
+    context_object_name = 'products_list'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page'] = self.kwargs.get('page', 1)
+        context['per_page'] = self.get_paginate_by(self.get_queryset())
+        context['page_count'] = self.paginate_by
+        return context
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'main/product_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pagination'] = bool(self.kwargs.get('per_page'))
+        context['per_page'] = self.kwargs.get('per_page')
+        context['page'] = self.kwargs.get('page')
+        return context
 
 
 def handle_uploaded_file(f, difference_between_files):
+    """Функция обработки загруженных файлов"""
     if os.path.exists(os.path.join("product_images", f.name)):
         filename = difference_between_files + f.name
         print(f"file exists! f.name = {f.name}, new={filename}")
@@ -84,60 +163,3 @@ def handle_uploaded_file(f, difference_between_files):
         for chunk in f.chunks():
             destination.write(chunk)
     return f'product_images/{filename}'
-
-
-def create(request):
-    """
-       Product
-       - Наименование name
-       - Описание description
-       - Изображение (превью) image
-       - Категория category
-       - Цена за покупку price
-       - Дата создания (записи в БД) created_at
-       - Дата последнего изменения (записи в БД) updated_at
-    """
-
-    number = Product.objects.count()
-    if number > 5:
-        products_list = Product.objects.all()[number - 5:number]
-    else:
-        products_list = Product.objects.all()
-
-    category_list = Category.objects.all()
-
-    context = {
-        'object_list': products_list,
-        'category_list': category_list,
-        'title': 'Добавить продукт',
-    }
-
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        description = request.POST.get('description')
-        price = request.POST.get('price')
-        category_id = request.POST.get('category')
-        image = request.FILES.get('image')  # Получаем файл изображения из запроса
-
-        time_of_creation = datetime.now().strftime('%Y-%m-%d')
-
-        try:
-            image_path = handle_uploaded_file(image, f"{time_of_creation}_{name}_")
-        except KeyError:
-            print("Отсутствует изображение")
-            image_path = None
-
-        info = {
-            'created_at': time_of_creation,
-            'updated_at': time_of_creation,
-            'name': name,
-            'price': price,
-            'description': description,
-            'category': Category.objects.get(id=category_id),
-            'image': image_path
-        }
-
-        print(info)
-        Product.objects.create(**info)
-
-    return render(request, 'main/create_product.html', context)
