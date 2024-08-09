@@ -23,12 +23,13 @@
                     <div class="btn-group">
                         <a class="btn btn-success" href="{% url 'blog:view' object.pk %}" role="button">Посмотреть</a>
 
-
+                        {% if user.is_authenticated %}
                         <a class="btn btn-warning" href="{% url 'blog:edit' object.pk %}"
                            role="button">Изменить</a>
 
                         <a class="btn btn-danger" href="{% url 'blog:delete' object.pk %}"
                            role="button">Удалить</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
