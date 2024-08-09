@@ -1,5 +1,5 @@
+
 {% extends "main/base.html" %}
-{% load static %}
 {% load static %}
 {% load my_tags %}
 
@@ -8,36 +8,50 @@
     {% if user.is_authenticated %}
     <a class="btn btn-primary" href="{% url 'catalog:create_product' %}" role="button">Добавить продукт</a>
     {% endif %}
-
 </div>
+
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     {% for object in object_list %}
     <div class="col">
         <div class="card shadow-sm">
-            <img src="{{ object.avatar }}">
             <div class="card-body">
                 <p class="card-text">
                     {{ object | title }}
                     <br>
-                    <b>Наименование: </b>{{object.name}}
-                    <br> <br>
-                <div class="card-body">
-                    <img src="{{object.image|media_filter}}" class="card-img-top" alt={{object.image|media_filter}}>
-                </div>
+                    <b>Наименование: </b>{{ object.name }}
+                    <br><br>
+                </p>
+                <img src="{{ object.image|media_filter }}" class="card-img-top" alt="{{ object.image|media_filter }}">
 
-                <b>Категория: </b>{{object.category}}
-                <br> <br>
-                <b>Цена: </b>{{object.price}}
+                <b>Категория: </b>{{ object.category }}
                 <br><br>
+                <b>Цена: </b>{{ object.price }}
+                <br><br>
+                <b>Владелец: </b>{{ object.owner }}
+                <br>
+
+                {% if object.versions.all %}
+                <b>Версии:</b>
+                <ul>
+                    {% for version in object.versions.all %}
+                    <li>{{ version.version_name }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Нет доступных версий.</p>
+                {% endif %}
+
                 <div class="d-grid gap-2 d-md-block">
                     <div class="btn-group">
                         <a class="btn btn-success" href="{% url 'catalog:view_product' object.pk %}" role="button">Посмотреть</a>
 
+                        {% if user.is_authenticated %}
                         <a class="btn btn-warning" href="{% url 'catalog:update_product' object.pk %}" role="button">Изменить</a>
-
                         <a class="btn btn-danger" href="{% url 'catalog:delete_product' object.pk %}" role="button">Удалить</a>
+                        {% endif %}
                     </div>
                 </div>
+
                 <div class="card-body">
                     <ul class="list-group">
                         {% for category in list_category %}
@@ -50,10 +64,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
     {% endfor %}
-
 </div>
 {% endblock %}
