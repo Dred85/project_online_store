@@ -75,7 +75,6 @@ class PasswordResetView(View):
         try:
             user = User.objects.get(email=email)
             new_password = User.objects.make_random_password()
-            # new_password = generate_random_password()
             user.password = make_password(new_password)
             user.save()
 

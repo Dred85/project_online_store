@@ -19,7 +19,7 @@ class ProductForm(StyledFormMixin, forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price', 'category', 'image']
+        fields = ['name', 'description', 'price', 'category', 'image', 'is_published']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
@@ -61,7 +61,7 @@ class ProductForm(StyledFormMixin, forms.ModelForm):
 class ProductModeratorForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['description', 'category', 'is_publish']
+        fields = ['description', 'category', 'is_published']
 
 
 
