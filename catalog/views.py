@@ -87,7 +87,7 @@ class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
 class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
-    permission_required = 'catalog.change_product'
+    permission_required = ('catalog.can_edit_description', 'catalog.can_edit_category', 'catalog.can_edit_publish')
     template_name = 'main/product_form.html'
     success_url = reverse_lazy('catalog:product_list')
 
