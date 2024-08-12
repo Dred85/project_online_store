@@ -3,10 +3,10 @@ import os
 from catalog.models import Product, Contact, Category, Version
 
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.forms import inlineformset_factory
 
-from catalog.forms import ContactForm, ProductForm, ProductVersionForm
+from catalog.forms import ContactForm, ProductForm, ProductVersionForm, ProductModeratorForm
 from django.views.generic import (
     ListView,
     DetailView,
@@ -30,7 +30,7 @@ class HomeView(ListView):
         return context
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'main/product_list.html'
     paginate_by = 3
@@ -53,20 +53,12 @@ class ProductListView(ListView):
         return context
 
 
-
-
-class ProductCreateView(CreateView, LoginRequiredMixin):
+class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
+    permission_required = 'catalog.add_product'
     template_name = 'main/product_form.html'
     success_url = reverse_lazy('catalog:product_list')
-
-    # def form_valid(self, form):
-    #     product = form.save()
-    #     user = self.request.user
-    #     product.owner = user
-    #     product.save()
-    #     return super().form_valid(form)
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -87,9 +79,10 @@ class ProductCreateView(CreateView, LoginRequiredMixin):
         return context
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
+    permission_required = 'catalog.change_product'
     template_name = 'main/product_form.html'
     success_url = reverse_lazy('catalog:product_list')
 
@@ -114,11 +107,18 @@ class ProductUpdateView(UpdateView):
         else:
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
+    def get_form_class(self):
+        user = self.request.user
+        if user == self.object.owner:
+            return ProductForm
+        if user.has_perm("catalog.can_edit_description") and user.has_perm("catalog.can_edit_publish") and user.has_perm("catalog.can_edit_category"):
+            return ProductModeratorForm
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Product
     template_name = 'main/product_confirm_delete.html'
     success_url = reverse_lazy('catalog:product_list')
+    permission_required = 'catalog.delete_product'
 
 
 class ContactView(CreateView):
@@ -133,7 +133,7 @@ class ContactView(CreateView):
         return context
 
 
-class CatalogView(ListView):
+class CatalogView(LoginRequiredMixin, ListView):
     paginate_by = 3
     model = Product
     template_name = 'main/per_page.html'

@@ -23,6 +23,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего изменения')
+    is_publish = models.BooleanField(default=False, verbose_name='Опубликован')
 
     owner = models.ForeignKey(User, verbose_name="владелец", help_text="Укажите владельца продукта", blank=True, null=True, on_delete=models.SET_NULL)
 
@@ -34,6 +35,12 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+        ordering = ['-created_at']
+        permissions = [
+            ("can_edit_description", "can_edit_description"),
+            ("can_edit_category", "can_edit_category"),
+            ("can_edit_publish", "can_edit_publish")
+        ]
 
 
 class Contact(models.Model):
