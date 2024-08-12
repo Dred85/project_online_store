@@ -12,7 +12,7 @@ class ContactForm(forms.ModelForm):
         fields = ['name', 'email', 'phone', 'address', 'message']
 
 
-class ProductForm(forms.ModelForm):
+class ProductForm(StyledFormMixin, forms.ModelForm):
     PROHIBITED_WORDS = [
         'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
     ]
@@ -56,6 +56,13 @@ class ProductForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+
+class ProductModeratorForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['description', 'category', 'is_publish']
+
 
 
 class ProductVersionForm(StyledFormMixin, forms.ModelForm):
