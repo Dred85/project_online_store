@@ -44,8 +44,8 @@ class ProductForm(StyledFormMixin, forms.ModelForm):
                     f"Описание не должно содержать запрещенные слова: {', '.join(self.PROHIBITED_WORDS)}")
         return cleaned_data
 
-    def init(self, *args, **kwargs):
-        super().init(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
