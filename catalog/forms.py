@@ -64,7 +64,6 @@ class ProductModeratorForm(StyledFormMixin, forms.ModelForm):
         fields = ['description', 'category', 'is_published']
 
 
-
 class ProductVersionForm(StyledFormMixin, forms.ModelForm):
     class Meta:
         model = Version

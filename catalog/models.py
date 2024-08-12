@@ -27,11 +27,6 @@ class Product(models.Model):
 
     owner = models.ForeignKey(User, verbose_name="владелец", help_text="Укажите владельца продукта", blank=True, null=True, on_delete=models.SET_NULL)
 
-
-
-    def __str__(self):
-        return self.name
-
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
@@ -40,6 +35,9 @@ class Product(models.Model):
             ("can_edit_category", "can_edit_category"),
             ("can_edit_publish", "can_edit_publish")
         ]
+
+    def __str__(self):
+        return self.name
 
 
 class Contact(models.Model):
