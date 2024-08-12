@@ -1,7 +1,7 @@
 import os
 
 from catalog.models import Product, Contact, Category, Version
-
+from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.forms import inlineformset_factory
@@ -30,12 +30,17 @@ class HomeView(ListView):
         return context
 
 
-class ProductListView(LoginRequiredMixin, ListView):
+class ProductListView(ListView):
     model = Product
     template_name = 'main/product_list.html'
     paginate_by = 3
 
     context_object_name = 'products'
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.filter(is_published=True)
+        return queryset
 
     def get_context_data(self, **kwargs):
         # Получаем контекст из родительского класса
@@ -111,8 +116,11 @@ class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView)
         user = self.request.user
         if user == self.object.owner:
             return ProductForm
-        if user.has_perm("catalog.can_edit_description") and user.has_perm("catalog.can_edit_publish") and user.has_perm("catalog.can_edit_category"):
+        if user.has_perm("catalog.can_edit_description") and user.has_perm(
+                "catalog.can_edit_publish") and user.has_perm("catalog.can_edit_category"):
             return ProductModeratorForm
+        raise PermissionDenied
+
 
 class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Product
