@@ -58,7 +58,7 @@ class ProductForm(StyledFormMixin, forms.ModelForm):
         return instance
 
 
-class ProductModeratorForm(forms.ModelForm):
+class ProductModeratorForm(StyledFormMixin, forms.ModelForm):
     class Meta:
         model = Product
         fields = ['description', 'category', 'is_published']
