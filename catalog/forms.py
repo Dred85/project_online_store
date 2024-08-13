@@ -12,14 +12,14 @@ class ContactForm(forms.ModelForm):
         fields = ['name', 'email', 'phone', 'address', 'message']
 
 
-class ProductForm(forms.ModelForm):
+class ProductForm(StyledFormMixin, forms.ModelForm):
     PROHIBITED_WORDS = [
         'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
     ]
 
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price', 'category', 'image']
+        fields = ['name', 'description', 'price', 'category', 'image', 'is_published']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
@@ -44,8 +44,8 @@ class ProductForm(forms.ModelForm):
                     f"Описание не должно содержать запрещенные слова: {', '.join(self.PROHIBITED_WORDS)}")
         return cleaned_data
 
-    def init(self, *args, **kwargs):
-        super().init(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
@@ -56,6 +56,12 @@ class ProductForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+
+class ProductModeratorForm(StyledFormMixin, forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['description', 'category', 'is_published']
 
 
 class ProductVersionForm(StyledFormMixin, forms.ModelForm):

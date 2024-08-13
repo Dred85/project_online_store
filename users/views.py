@@ -19,7 +19,7 @@ from django.contrib.auth.hashers import make_password
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class RegisterView(CreateView):
     model = User
@@ -44,7 +44,7 @@ class RegisterView(CreateView):
         return super().form_valid(form)
 
 
-class ProfileView(UpdateView):
+class ProfileView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserProfileForm
     success_url = reverse_lazy('users:profile')
@@ -75,7 +75,6 @@ class PasswordResetView(View):
         try:
             user = User.objects.get(email=email)
             new_password = User.objects.make_random_password()
-            # new_password = generate_random_password()
             user.password = make_password(new_password)
             user.save()
 
