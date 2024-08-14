@@ -35,9 +35,10 @@
                     <tr>
                         <td>{{ category.name }}</td>
                         <td>{{ category.description }}</td>
-                        <td><a class="btn btn-primary" href="{% url 'catalog:category_list' %}"
+                        <td><a class="btn btn-primary" href="{% url 'catalog:view_product' category.pk %}"
                                role="button">Посмотреть продукты</a></td>
                     </tr>
+
                     {% endfor %}
 
                     </tbody>

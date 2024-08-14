@@ -17,5 +17,6 @@ urlpatterns = [
     path('contacts/', ContactView.as_view(), name='contacts'),
     path('catalog/<int:page>/<int:per_page>/', CatalogView.as_view(), name='catalog'),
     path("category/", CategoryListView.as_view(), name='category_list'),
+    path('category/<int:pk>/', CategoryListView.as_view(), name='category_list_product'),
 
 ]
