@@ -1,5 +1,6 @@
 import os
 
+from django.core.cache import cache
 from catalog.models import Product, Contact, Category, Version
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy
@@ -14,6 +15,9 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
+
+from catalog.services import get_cached_category
+from config import settings
 
 
 class HomeView(ListView):
@@ -45,6 +49,7 @@ class ProductListView(ListView):
     def get_context_data(self, **kwargs):
         # Получаем контекст из родительского класса
         context = super().get_context_data(**kwargs)
+        context['category_list'] = get_cached_category()
         # Получаем все продукты
         products = context['products']
         # Создаем словарь для хранения текущих версий
@@ -155,12 +160,29 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'main/product_detail.html'
 
+    # def get_context_data(self, **kwargs):
+    # context_data = super().get_context_data(**kwargs)
+    # context_data['version_name'] = name
+    # return context_data
+
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['pagination'] = bool(self.kwargs.get('per_page'))
-        context['per_page'] = self.kwargs.get('per_page')
-        context['page'] = self.kwargs.get('page')
-        return context
+        context_data = super().get_context_data(**kwargs)
+
+        if settings.CACHE_ENABLED:
+            key = f'product_{self.object.pk}'
+            product = cache.get(key)
+
+            if product is None:
+                # Получаем объект из базы данных, если он не найден в кеше
+                product = self.object
+                # Сохраняем весь объект в кеш
+                cache.set(key, product, 60 * 15)  # Кешируем на 15 минут
+        else:
+            product = self.object
+
+        # Добавляем все поля продукта в контекст
+        context_data['product'] = product
+        return context_data
 
 
 def handle_uploaded_file(f, difference_between_files):
@@ -175,3 +197,13 @@ def handle_uploaded_file(f, difference_between_files):
         for chunk in f.chunks():
             destination.write(chunk)
     return f'product_images/{filename}'
+
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'main/category_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_list'] = get_cached_category()
+        return context
