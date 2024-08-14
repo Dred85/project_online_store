@@ -45,8 +45,6 @@ class ProductListView(ListView):
         queryset = queryset.filter(is_published=True)
         return queryset
 
-
-
     def get_context_data(self, **kwargs):
         # Получаем контекст из родительского класса
         context = super().get_context_data(**kwargs)
@@ -198,6 +196,7 @@ def handle_uploaded_file(f, difference_between_files):
         for chunk in f.chunks():
             destination.write(chunk)
     return f'product_images/{filename}'
+
 
 class CategoryListView(ListView):
     model = Category
