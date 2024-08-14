@@ -15,6 +15,7 @@ from django.views.generic import (
     DeleteView,
 )
 
+from catalog.services import get_cached_category
 from config import settings
 
 
@@ -44,9 +45,12 @@ class ProductListView(ListView):
         queryset = queryset.filter(is_published=True)
         return queryset
 
+
+
     def get_context_data(self, **kwargs):
         # Получаем контекст из родительского класса
         context = super().get_context_data(**kwargs)
+        context['category_list'] = get_cached_category()
         # Получаем все продукты
         products = context['products']
         # Создаем словарь для хранения текущих версий
@@ -156,20 +160,11 @@ class CatalogView(LoginRequiredMixin, ListView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'main/product_detail.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context_data = super().get_context_data(**kwargs)
-#         if settings.CACHE_ENABLED:
-#             key = f'name {self.object.pk}'
-#             name = cache.get(key)
-#             if name is None:
-#                 name = self.object.name_set.all()
-#                 cache.set(key, name)
-#         else:
-#             name = self.object.name_set.all()
-#
-#         context_data['version_name'] = name
-#         return context_data
+
+    # def get_context_data(self, **kwargs):
+    # context_data = super().get_context_data(**kwargs)
+    # context_data['version_name'] = name
+    # return context_data
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -190,6 +185,7 @@ class ProductDetailView(DetailView):
         context_data['product'] = product
         return context_data
 
+
 def handle_uploaded_file(f, difference_between_files):
     """Функция обработки загруженных файлов"""
     if os.path.exists(os.path.join("product_images", f.name)):
@@ -202,3 +198,12 @@ def handle_uploaded_file(f, difference_between_files):
         for chunk in f.chunks():
             destination.write(chunk)
     return f'product_images/{filename}'
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'main/category_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_list'] = get_cached_category()
+        return context

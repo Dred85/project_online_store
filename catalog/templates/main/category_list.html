@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load my_tags %}
+{% block content %}
+
+
+<div class="row text-right">
+
+    <div class="col-12">
+
+        <div class="card mb-3 box-shadow">
+
+
+            <div class="card-body">
+                <h5 class="card-title">
+                    <div style="color: orange"><b>Список категорий:</b></div>
+                </h5>
+
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Название категории</th>
+                        <th scope="col">Описание категории</th>
+                        <th scope="col">Показать продукты</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% load my_tags %}
+
+
+                    {% for category in category_list %}
+
+                    <tr>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.description }}</td>
+                        <td><a class="btn btn-primary" href="{% url 'catalog:category_list' %}"
+                               role="button">Посмотреть продукты</a></td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+{% endblock %}

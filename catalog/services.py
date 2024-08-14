@@ -1,7 +1,9 @@
 from django.core.cache import cache
 
-from catalog.models import  Category
+from catalog.models import Category
 from config import settings
+
+
 def get_cached_category(recached: bool = False):
     if settings.CACHE_ENABLED:
         key = f'category_list'
@@ -16,5 +18,3 @@ def get_cached_category(recached: bool = False):
     else:
         category_list = Category.objects.all()
     return category_list
-
-
