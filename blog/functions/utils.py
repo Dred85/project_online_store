@@ -5,14 +5,15 @@ from email.mime.text import MIMEText
 
 def send_email(blog):
     # Учетные данные для отправки письма
-    login = 'olonovaleksandar'
-    password = 'wpaqnubuejmchlrk'
-    email_to = ['adrolv@rambler.ru']  # Список получателей
+    login = "olonovaleksandar"
+    password = "wpaqnubuejmchlrk"
+    email_to = ["adrolv@rambler.ru"]  # Список получателей
 
     # Создание содержимого письма
     msg = MIMEText(
         f"Поздравляю, ваша статья {blog.title} набрала {blog.views_count} просмотров",
-        "plain", "utf-8"
+        "plain",
+        "utf-8",
     )
     msg["Subject"] = Header("Поздравляю !!!", "utf-8")
     msg["From"] = f"{login}@yandex.ru"
