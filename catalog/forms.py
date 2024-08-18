@@ -9,45 +9,55 @@ from .models import Contact, Product, Version
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ['name', 'email', 'phone', 'address', 'message']
+        fields = ["name", "email", "phone", "address", "message"]
 
 
 class ProductForm(StyledFormMixin, forms.ModelForm):
     PROHIBITED_WORDS = [
-        'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
+        "казино",
+        "криптовалюта",
+        "крипта",
+        "биржа",
+        "дешево",
+        "бесплатно",
+        "обман",
+        "полиция",
+        "радар",
     ]
 
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price', 'category', 'image', 'is_published']
+        fields = ["name", "description", "price", "category", "image", "is_published"]
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'price': forms.NumberInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(attrs={'class': 'form-control'}),
-            'image': forms.FileInput(attrs={'class': 'form-control'}),
+            "name": forms.TextInput(attrs={"class": "form-control"}),
+            "description": forms.Textarea(attrs={"class": "form-control"}),
+            "price": forms.NumberInput(attrs={"class": "form-control"}),
+            "category": forms.Select(attrs={"class": "form-control"}),
+            "image": forms.FileInput(attrs={"class": "form-control"}),
         }
 
     def clean_name(self):
-        cleaned_data = self.cleaned_data['name']
+        cleaned_data = self.cleaned_data["name"]
         for word in self.PROHIBITED_WORDS:
             if word in cleaned_data.lower():
                 raise forms.ValidationError(
-                    f"Имя не должно содержать запрещенные слова: {', '.join(self.PROHIBITED_WORDS)}")
+                    f"Имя не должно содержать запрещенные слова: {', '.join(self.PROHIBITED_WORDS)}"
+                )
         return cleaned_data
 
     def clean_description(self):
-        cleaned_data = self.cleaned_data['description']
+        cleaned_data = self.cleaned_data["description"]
         for word in self.PROHIBITED_WORDS:
             if word in cleaned_data.lower():
                 raise forms.ValidationError(
-                    f"Описание не должно содержать запрещенные слова: {', '.join(self.PROHIBITED_WORDS)}")
+                    f"Описание не должно содержать запрещенные слова: {', '.join(self.PROHIBITED_WORDS)}"
+                )
         return cleaned_data
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs["class"] = "form-control"
 
     def save(self, commit=True):
         instance = super().save(commit=False)
@@ -61,10 +71,10 @@ class ProductForm(StyledFormMixin, forms.ModelForm):
 class ProductModeratorForm(StyledFormMixin, forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['description', 'category', 'is_published']
+        fields = ["description", "category", "is_published"]
 
 
 class ProductVersionForm(StyledFormMixin, forms.ModelForm):
     class Meta:
         model = Version
-        fields = ('version_number', 'version_name')
+        fields = ("version_number", "version_name")

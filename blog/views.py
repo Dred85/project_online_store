@@ -1,4 +1,10 @@
-from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
+from django.views.generic import (
+    CreateView,
+    ListView,
+    UpdateView,
+    DetailView,
+    DeleteView,
+)
 from django.urls import reverse_lazy
 from blog.models import BlogPost
 
@@ -17,7 +23,7 @@ class BlogCreateView(CreateView):
         "is_published",
         "views_count",
     )
-    success_url = reverse_lazy('blog:list')
+    success_url = reverse_lazy("blog:list")
 
     def form_valid(self, form):
         if form.is_valid():
@@ -52,7 +58,7 @@ class BlogUpdateView(UpdateView):
 
 class BlogListView(ListView):
     model = BlogPost
-    template_name = 'blog/list.html'
+    template_name = "blog/list.html"
     paginate_by = 3
 
     def get_queryset(self, *args, **kwargs):
@@ -77,4 +83,4 @@ class BlogDetailView(DetailView):
 
 class BlogDeleteView(DeleteView):
     model = BlogPost
-    success_url = reverse_lazy('blog:list')
+    success_url = reverse_lazy("blog:list")
