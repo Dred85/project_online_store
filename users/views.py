@@ -21,11 +21,12 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 class RegisterView(CreateView):
     model = User
     form_class = UserRegisterForm
     template_name = "users/register.html"
-    success_url = reverse_lazy('users:login')
+    success_url = reverse_lazy("users:login")
 
     def form_valid(self, form):
         user = form.save()
@@ -34,12 +35,12 @@ class RegisterView(CreateView):
         user.token = token
         user.save()
         host = self.request.get_host()
-        url = f'http://{host}/users/email-confirm/{token}/'
+        url = f"http://{host}/users/email-confirm/{token}/"
         send_mail(
             subject="Подтверждение почты",
             message=f"Здравствуйте, перейдите по ссылке: {url}",
             from_email=EMAIL_HOST_USER,
-            recipient_list=[user.email]
+            recipient_list=[user.email],
         )
         return super().form_valid(form)
 
@@ -47,7 +48,7 @@ class RegisterView(CreateView):
 class ProfileView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserProfileForm
-    success_url = reverse_lazy('users:profile')
+    success_url = reverse_lazy("users:profile")
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -63,15 +64,15 @@ def email_verification(request, token):
 def generate_random_password(length=8):
     """Генерирует случайный пароль заданной длины."""
     characters = string.ascii_letters + string.digits + string.punctuation
-    return ''.join(random.choice(characters) for i in range(length))
+    return "".join(random.choice(characters) for i in range(length))
 
 
 class PasswordResetView(View):
     def get(self, request):
-        return render(request, 'users/password_reset.html')
+        return render(request, "users/password_reset.html")
 
     def post(self, request):
-        email = request.POST.get('email')
+        email = request.POST.get("email")
         try:
             user = User.objects.get(email=email)
             new_password = User.objects.make_random_password()
@@ -80,8 +81,8 @@ class PasswordResetView(View):
 
             # Отправка email с новым паролем
             send_mail(
-                'Ваш новый пароль',
-                f'Ваш новый пароль: {new_password}',
+                "Ваш новый пароль",
+                f"Ваш новый пароль: {new_password}",
                 settings.DEFAULT_FROM_EMAIL,
                 [email],
                 fail_silently=True,
@@ -89,5 +90,4 @@ class PasswordResetView(View):
             )
             return redirect(reverse("users:login"))
         except Exception as e:
-            return render(request, 'users/do_not_know_email.html')
-
+            return render(request, "users/do_not_know_email.html")

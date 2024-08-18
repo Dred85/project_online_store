@@ -6,7 +6,7 @@ from config import settings
 
 def get_cached_category(recached: bool = False):
     if settings.CACHE_ENABLED:
-        key = f'category_list'
+        key = f"category_list"
         if recached:
             category_list = Category.objects.all()
             cache.set(key, category_list)

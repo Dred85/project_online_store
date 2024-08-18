@@ -4,8 +4,8 @@ from .models import BlogPost
 
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    search_fields = ('title',)
+    list_display = ("id", "title")
+    search_fields = ("title",)
 
 
 # @admin.register(Product)
