@@ -1,5 +1,6 @@
 import os
-
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 from django.core.cache import cache
 from catalog.models import Product, Contact, Category, Version
 from django.core.exceptions import PermissionDenied
@@ -23,6 +24,14 @@ from django.views.generic import (
 
 from catalog.services import get_cached_category
 from config import settings
+
+def never_cache_class(cls):
+    # Применить декоратор never_cache ко всем методам класса
+    for attr in dir(cls):
+        method = getattr(cls, attr)
+        if callable(method) and attr in ['get', 'post', 'put', 'delete', 'head', 'options', 'patch']:
+            setattr(cls, attr, method_decorator(never_cache)(method))
+    return cls
 
 
 class HomeView(ListView):
@@ -69,7 +78,7 @@ class ProductListView(ListView):
         context["current_versions"] = current_versions
         return context
 
-
+@never_cache_class
 class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
@@ -96,6 +105,7 @@ class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
         return context
 
 
+@never_cache_class
 class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
