@@ -48,7 +48,6 @@ INSTALLED_APPS = [
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
-    "django.middleware.cache.UpdateCacheMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -56,7 +55,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django.middleware.cache.FetchFromCacheMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -86,9 +84,9 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": os.getenv("NAME"),
-        "USER": os.getenv("USER"),
-        "PASSWORD": os.getenv("PASSWORD"),
-        "HOST": os.getenv("HOST"),
+        "USER": "postgres",
+        "PASSWORD": os.getenv("DATABASES_PASSWORD"),
+        "HOST": "localhost",
         "PORT": os.getenv("PORT"),
     }
 }
