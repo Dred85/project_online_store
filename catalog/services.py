@@ -5,6 +5,7 @@ from config.settings import CACHE_ENABLED
 
 
 def get_cached_category():
+    """Получает данные по категориям из кэша, если кэш пуст, получает данные из БД"""
     if not CACHE_ENABLED:
         return Category.objects.all()
     key = 'category_list'

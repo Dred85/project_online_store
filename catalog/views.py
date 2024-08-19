@@ -231,6 +231,9 @@ class CategoryListView(ListView):
     model = Category
     template_name = "main/category_list.html"
 
+    def get_queryset(self):
+        return get_cached_category()
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["category_list"] = get_cached_category()
