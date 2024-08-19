@@ -11,8 +11,10 @@ from blog.models import BlogPost
 from django.urls import reverse
 from pytils.translit import slugify
 from blog.functions.utils import send_email
+from catalog.views import never_cache_class
 
 
+@never_cache_class
 class BlogCreateView(CreateView):
     model = BlogPost
     fields = (
@@ -32,7 +34,7 @@ class BlogCreateView(CreateView):
             new_blog.save()
         return super().form_valid(form)
 
-
+@never_cache_class
 class BlogUpdateView(UpdateView):
     model = BlogPost
     fields = (
