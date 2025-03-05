@@ -3,14 +3,14 @@
 {% block content %}
 <div style="max-width: 1100px; margin: 0 auto;">
     <h1 style="text-align: left;">Статья:"{{ object.title }}" ({{object.slug}})</h1>
-    {% if blogpost.preview_image %}
+    {% if object.preview_image %}
     <img src="{{ blogpost.preview_image.url }}" alt="Preview Image"
          style="display: block; margin: 0 auto; max-width: 100%;">
     {% else %}
     <p style="text-align: left;">Изображение для предварительного просмотра недоступно.</p>
     {% endif %}
-    <p>{{ blogpost.content }}</p>
-    <p style="text-align: left;">Просмотры: {{ blogpost.views_count }}</p>
+    <p>{{ object.content }}</p>
+    <p style="text-align: left;">Просмотры: {{ object.views_count }}</p>
     <div style="text-align: left;">
         <a href="{% url 'blog:edit' blogpost.pk %}" style="margin-right: 10px;">Изменить</a>
         <a href="{% url 'blog:delete' blogpost.pk %}" style="margin-right: 10px;">Удалить</a>

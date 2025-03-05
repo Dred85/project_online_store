@@ -11,6 +11,7 @@ class BlogPost(models.Model):
     is_published = models.BooleanField(default=True)
     views_count = models.PositiveIntegerField(default=0)
 
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
