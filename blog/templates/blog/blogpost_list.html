@@ -1,7 +1,7 @@
 {% extends "main/base.html" %}
-
-{% load static %}
 {% block  content %}
+
+
 <div class="container mb-2 mt-2">
     {% if user.is_authenticated %}
     <a class="btn btn-primary" href="{% url 'blog:create' %}" role="button">Добавить статью</a>
@@ -13,7 +13,13 @@
     {% for object in object_list %}
     <div class="col">
         <div class="card shadow-sm">
-            <img src="{{ object.avatar }}">
+            {% if object.preview_image %}
+            <img src="{{ object.preview_image.url }}" alt="Preview Image"
+                 style="display: block; margin: 0 auto; max-width: 50%;">
+            {% else %}
+            <p style="text-align: left;">Изображение отсутствует.</p>
+            {% endif %}
+
             <div class="card-body">
                 <p class="card-text">
                     {{ object | title }}

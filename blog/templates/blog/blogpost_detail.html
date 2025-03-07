@@ -9,7 +9,7 @@
     {% else %}
     <p style="text-align: left;">Изображение для предварительного просмотра недоступно.</p>
     {% endif %}
-    <p>{{ object.content }}</p>
+    <p>{{ blogpost.content }}</p>
     <p style="text-align: left;">Просмотры: {{ object.views_count }}</p>
     <div style="text-align: left;">
         <a href="{% url 'blog:edit' blogpost.pk %}" style="margin-right: 10px;">Изменить</a>
