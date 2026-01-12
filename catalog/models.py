@@ -52,7 +52,6 @@ class Product(models.Model):
 
 
 class Contact(models.Model):
-    objects = None
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
